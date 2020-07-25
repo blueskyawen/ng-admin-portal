@@ -1,0 +1,91 @@
+@import '../../css/config';
+
+.dashboard {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  > div {
+    width: inherit;
+    border: solid 1px @gray-grade-6;
+    border-radius: 2px;
+    .header {
+      background: @gray-grade-8;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      padding-left: 15px;
+      .font-paletx {
+        margin-right: 10px;
+      }
+    }
+    .content {
+      padding: 20px;
+      position: relative;
+      .loading {
+        /deep/ .px-loading-max {
+          position: absolute !important;
+          left: 50%;
+          transform: translateX(-50%);
+          top: 50px;
+        }
+      }
+    }
+    &.clusters {
+      .content {
+        display: flex;
+        flex-wrap: wrap;
+        .cluster {
+          height: 110px;
+          width: 135px;
+          background: @default-white;
+          border: solid 1px @gray-grade-7;
+          border-radius: 3px;
+          padding: 15px;
+          box-sizing: border-box;
+          margin-right: 10px;
+          cursor: pointer;
+          .cluster-name {
+            font-size: @default-font-size;
+            height: 40%;
+            display: flex;
+            align-items: center;
+          }
+          .cluster-action {
+            height: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: @font-size-lg;
+            .font-paletx {
+              font-size: @font-size-xl;
+            }
+          }
+          &.selected {
+            background: @blue-5;
+            border-color: @blue-5;
+            color: @default-white;
+          }
+          &.add-cluster {
+            display: flex;
+            align-items: center;
+            font-size: @font-size-lg;
+            &:hover {
+              border-color: @blue-5;
+              color: @blue-5;
+            }
+          }
+        }
+      }
+    }
+    &.cluster-detail {
+      margin-top: 30px;
+      width: 100%;
+      .content {
+        width: 100%;
+        height: 700px;
+        padding: 0;
+      }
+    }
+  }
+}

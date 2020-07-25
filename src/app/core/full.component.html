@@ -1,0 +1,82 @@
+<div class="main-app">
+  <header>
+    <div class="app-icon">
+      <div class="app-title">Admin Portal</div>
+    </div>
+    <div class="app-menu">
+      <div class="menu-items">
+        <div class="menu-icon">
+          <span class="font-paletx px-service"></span>
+          <div class="menu-plane">
+            <div class="plane-header">
+              <span>主菜单</span>
+              <span>
+                <span class="font-paletx px-back" title="撤销已收藏菜单"></span>
+                <span>已收藏 0/5 个</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item" [class.checked]="curMenu === 'dashboard'"
+             (click)="clickMenu('dashboard')">{{'menu.dashboard' | translate}}</div>
+        <div class="menu-item" [class.checked]="curMenu === 'sysManage'"
+             (click)="clickMenu('sysManage')">{{'menu.sysManage.name' | translate}}</div>
+        <div class="menu-item" [class.checked]="curMenu === 'clusterManage'"
+             (click)="clickMenu('clusterManage')">{{'menu.clusterManage.name' | translate}}</div>
+      </div>
+      <div class="menu-items">
+        <div class="menu-lang px-dropdown-menubar px-toggle-by-click">
+          <a name="changeLang" class="px-dropdown-menubar-navbar" href="javascript:void(0);">
+            <span class="font-paletx" [ngClass]="{'px-chinese_20': lang === 'zh','px-english_20': lang === 'en'}"></span>
+            <span class="font-paletx px-caret-down"></span>
+          </a>
+          <ul class="px-dropdown-menu">
+            <li>
+              <a name ="selectChinese" [class.selected]="lang === 'zh'" href="javascript:void(0);" (click)="switchLang()">
+                <span class="font-paletx px-chinese_20 span-font-size"></span> 中文
+              </a>
+            </li>
+            <li>
+              <a name ="selectEnglish" [class.selected]="lang === 'en'" href="javascript:void(0);" (click)="switchLang()">
+                <span class="font-paletx px-english_20 span-font-size"></span> EN&nbsp;
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="menu-user px-dropdown-menubar px-toggle-by-click">
+          <a name="user-manage" class="px-dropdown-menubar-navbar" href="javascript:void(0);">
+            <span class="font-paletx px-user_20"></span>
+            <span class="user-name">{{userName}}</span>
+            <span class="font-paletx px-caret-down"></span>
+          </a>
+          <ul class="px-dropdown-menu">
+            <li>
+              <a name ="about" href="javascript:void(0);" routerLink="/about">
+                <span class="font-paletx px-about"></span>
+                <span>{{'login.about' | translate}}</span>
+              </a>
+            </li>
+            <li>
+              <a name ="loginOut" href="javascript:void(0);" (click)="loginOut()">
+                <span class="font-paletx px-logout_20"></span>
+                <span>{{'login.loginOut' | translate}}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="main-content" [ngClass]="{'sideBar-hidden': !showSidebar}">
+    <div class="sideBar">
+      <cluster-manage-sidebar *ngIf="curMenu === 'clusterManage'"></cluster-manage-sidebar>
+      <system-manage-sidebar *ngIf="curMenu === 'sysManage'"></system-manage-sidebar>
+    </div>
+    <div class="content">
+      <span *ngIf="curMenu !== 'dashboard'" class="font-paletx side-switch"
+            [ngClass]="{'px-left': showSidebar, 'px-right': !showSidebar}"
+            (click)="toggleSidebar()"></span>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{
+  "back": "返回",
+  "success": "成功",
+  "successMsg": "操作成功, 3秒后自动消失!",
+  "error": "错误",
+  "errorMsg": "操作失败通知!",
+  "warn": "警告",
+  "warnMsg": "操作警告通知!",
+  "cluster": "集群"
+}

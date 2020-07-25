@@ -1,0 +1,84 @@
+@import './config';
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html, body { height: 100%; }
+
+body {
+  font-family: @font-family;
+  font-size: @default-font-size;
+  min-width: 768px;
+  line-height: 1;
+  scrollbar-face-color: @gray-grade-6;
+  scrollbar-track-color: @default-white;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+pre {
+  padding: 5px;
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: inherit;
+  border: 0;
+  border-radius: 0;
+  font-family: inherit;
+}
+
+// ==================================================================
+// PaletxUI样式补丁
+// ==================================================================
+.px-loading-center {
+  position: fixed;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  z-index: 2000;
+}
+
+.px-loading-max {
+  position: fixed !important;
+  left: -moz-calc(~"(100% - 200px)/2 + 200px - 72px");
+  left: -webkit-calc(~"(100% - 200px)/2 + 200px - 72px");
+  left: calc(~"(100% - 200px)/2 + 200px - 72px");
+  top: -moz-calc(~"(100% - 110px)/2");
+  top: -webkit-calc(~"(100% - 110px)/2");
+  top: calc(~"(100% - 110px)/2");
+  z-index: 1099;
+}
+
+.px-card .detail-group-wrap {
+  min-height:@dispel-min-height;
+  padding:0 20px;
+}
+
+.px-btn-refresh {
+  margin-left: 10px;
+  float: right;
+  width: 40px;
+  height: 36px;
+}
+// ==================================================================
+// 颜色类
+// ==================================================================
+.font-gray-light {
+  color: @font-gray-light
+}
+
+.default-blue {
+  color: @default-blue
+}
+
+.font-gray-normal {
+  color: @font-gray-normal
+}
+

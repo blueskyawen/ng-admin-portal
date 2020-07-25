@@ -1,0 +1,13 @@
+{
+  "login": {
+    "user": "User Name",
+    "password": "Password",
+    "login": "Login",
+    "logining": "Login Waiting...",
+    "remember": "Remember my user name",
+    "loginSucesss": "Login Sucesss",
+    "loginFail": "Login Fail",
+    "about": "About",
+    "loginOut": "Login Out"
+  }
+}

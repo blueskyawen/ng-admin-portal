@@ -1,0 +1,7 @@
+<px-content-header header= "{{'menu.clusterManage.overview' | translate}}">
+  <p-breadcrumb [model]="links"></p-breadcrumb>
+</px-content-header>
+<div class="cluster-content">
+  <cluster-dashboard *ngIf="clusterData" [clusterData]="clusterData"></cluster-dashboard>
+  <px-loading class="loading" *ngIf="!clusterData"></px-loading>
+</div>

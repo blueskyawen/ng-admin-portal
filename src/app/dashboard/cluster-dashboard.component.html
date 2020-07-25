@@ -1,0 +1,58 @@
+<div class="cluster-dashboard" *ngIf="clusterData" id="cluster-dashboard">
+  <div>
+    <div class="view-item">
+      <div echarts class="child-chart" [options]="iopsChartOption" (chartInit)="onIopsChartInit($event)"
+           [routerLink]="serverUrls['performance']"></div>
+    </div>
+    <div class="view-item">
+      <div echarts class="child-chart" [options]="byteChartOption"  [routerLink]="serverUrls['performance']"></div>
+    </div>
+  </div>
+  <div>
+    <div class="view-item">
+      <div class="child-chart"  [routerLink]="serverUrls['alarm']">
+        <div class="alam-head" [ngClass]="alarmGradeClass()">
+          <span class="font-paletx px-health_degree"></span>
+        </div>
+        <div class="alam-content">
+          <div class="alarms">
+            <div class="alarm-item" *ngFor="let item of clusterData.alarms">
+              <div class="alarm-num">
+                <span class="font-paletx px-alarm_p_20" [style.color]="item.color"></span>
+                <span class="num-value">{{item.value}}</span>
+              </div>
+              <div class="alarm-grade">{{item.name}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="view-item">
+      <div echarts class="child-chart" [options]="capacityChartOption" [routerLink]="serverUrls['performance']"></div>
+    </div>
+  </div>
+  <div>
+    <div class="view-item" *ngFor="let server of clusterData.servers" [routerLink]="serverUrls[server.name]">
+      <div class="child-chart">
+        <div class="serve-header">{{server.label}}</div>
+        <div class="serve-content">
+          <div class="serve-total">
+            <span class="font-paletx {{server.icon}}"></span>
+            <span>{{server.total}}</span>
+          </div>
+          <div class="serve-active">
+                <span class="serve-item">
+                  <span></span>
+                  <span>{{server.active}}</span>
+                </span>
+            <span class="serve-item">
+                  <span></span>
+                  <span>{{server.total - server.active}}</span>
+                </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

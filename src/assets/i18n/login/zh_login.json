@@ -1,0 +1,13 @@
+{
+  "login": {
+    "user": "用户名",
+    "password": "密码",
+    "login": "登录",
+    "logining": "登录中...",
+    "remember": "记住用户名",
+    "loginSucesss": "登录成功",
+    "loginFail": "登录失败",
+    "about": "关于",
+    "loginOut": "退出登录"
+  }
+}

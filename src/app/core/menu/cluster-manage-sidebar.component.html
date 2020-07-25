@@ -1,0 +1,16 @@
+<div class="sideBars">
+  <div class="sidebar-group" *ngFor="let menuGroup of sidebarCfgs">
+    <div class="sidebar-item  group-header">{{menuGroup.groupName}}</div>
+    <div *ngFor="let menu of menuGroup.children">
+      <div class="sidebar-item second-sidebar" (click)="clickSecondMenu(menu)"
+           [ngClass]="{'router-link-active': menu.active, 'has-third-menu': menu.children}">
+        <span><span class="menu-icon font-paletx {{menu.icon}}"></span>{{menu.label}}</span>
+        <span *ngIf="menu.children" class="font-paletx" [ngClass]="{'px-angle_down_16': !menu.expand, 'px-angle_up_16': menu.expand}"></span>
+      </div>
+      <div *ngIf="menu.children && menu.expand">
+        <div *ngFor="let item of menu.children" class="sidebar-item third-sidebar" [routerLink]="[item.url]"
+             (click)="clickSecondMenu(item)" [ngClass]="{'router-link-active': item.active}">{{item.label}}</div>
+      </div>
+    </div>
+  </div>
+</div>

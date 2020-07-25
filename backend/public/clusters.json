@@ -1,0 +1,114 @@
+{
+  "clusters": [
+    {
+      "id": "1234",
+      "name": "Cluter_1",
+      "state": "health",
+      "iops": [
+        {
+          "total": 15, "read": 14, "write": 1
+        },
+        {
+          "total": 12, "read": 8, "write": 4
+        },
+        {
+          "total": 1, "read": 1, "write": 0
+        },
+        {
+          "total": 5, "read": 5, "write": 0
+        },
+        {
+          "total": 0, "read": 0, "write": 0
+        }
+      ],
+      "bytePerSecond": [
+        {
+          "read": 3345, "write": 1143
+        },
+        {
+          "read": 13345, "write": 2143
+        },
+        {
+          "read": 1345, "write": 143
+        },
+        {
+          "read": 4345, "write": 0
+        },
+        {
+          "read": 6345, "write": 743
+        }
+      ],
+      "alarm": {
+        "critical": 0,
+        "serious": 1,
+        "warning": 0,
+        "prompt": 1
+      },
+      "capaticy": {
+        "physic": {"total": 200, "available": 40},
+        "avail": {"total": 200, "available": 160}
+      },
+      "mon": {"total": 3, "active": 3},
+      "server": {"total": 3, "active": 3},
+      "pool": {"total": 3, "active": 3},
+      "disk": {"total": 3, "active": 3},
+      "iscsi": {"total": 3, "active": 3},
+      "mds": {"total": 3, "active": 3}
+    },
+    {
+      "id": "222",
+      "name": "Cluter_2",
+      "state": "health",
+      "iops": [
+        {
+          "total": 26, "read": 14, "write": 12
+        },
+        {
+          "total": 20, "read": 18, "write": 2
+        },
+        {
+          "total": 1, "read": 1, "write": 0
+        },
+        {
+          "total": 15, "read": 10, "write": 5
+        },
+        {
+          "total": 6, "read": 3, "write": 3
+        }
+      ],
+      "bytePerSecond": [
+        {
+          "read": 1345, "write": 43
+        },
+        {
+          "read": 9345, "write": 2143
+        },
+        {
+          "read": 3456, "write": 1234
+        },
+        {
+          "read": 333, "write": 0
+        },
+        {
+          "read": 7777, "write": 6666
+        }
+      ],
+      "alarm": {
+        "critical": 1,
+        "serious": 2,
+        "warning": 3,
+        "prompt": 4
+      },
+      "capaticy": {
+        "physic": {"total": 500, "available": 140},
+        "avail": {"total": 300, "available": 260}
+      },
+      "mon": {"total": 1, "active": 1},
+      "server": {"total": 1, "active": 1},
+      "pool": {"total": 1, "active": 1},
+      "disk": {"total": 1, "active": 1},
+      "iscsi": {"total": 1, "active": 1},
+      "mds": {"total": 1, "active": 1}
+    }
+  ]
+}

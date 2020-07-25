@@ -1,0 +1,187 @@
+@import '../../css/config';
+
+.main-app  {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 5px @gray-grade-6;
+    background: @blue-6;
+    .app-icon {
+      display: flex;
+      align-items: center;
+      height: inherit;
+      position: relative;
+      width: 13%;
+      padding-left: 20px;
+      box-sizing: border-box;
+      .app-title {
+        color: @default-white;
+        font-size: 16px;
+      }
+    }
+    .app-menu {
+      height: inherit;
+      display: flex;
+      justify-content: space-between;
+      width: 87%;
+      .menu-items {
+        height: inherit;
+        display: flex;
+        align-items: center;
+        > div {
+          height: inherit;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          &:hover {
+            background-color: @blue-8;
+            cursor: pointer;
+          }
+          &.menu-icon {
+            position: relative;
+            width: 60px;
+            color: @default-white;
+            .font-paletx {
+              font-size: @font-size-xl;
+            }
+            &:hover {
+              .menu-plane {
+                display: block;
+              }
+            }
+            .menu-plane {
+              display: none;
+              position: absolute;
+              top: 100%;
+              left: 0;
+              z-index: 9999;
+              background: @default-white;
+              color: @gray-grade-4;
+              border: solid 1px @gray-grade-7;
+              border-radius: 2px;
+              padding: 10px 20px;
+              width: 300px;
+              height: 200px;
+              .plane-header {
+                display: flex;
+                justify-content: space-between;
+                font-size: 14px;
+                align-items: center;
+                > span {
+                  &:last-child {
+                    span {
+                      font-size: 12px;
+                      &.px-back {
+                        font-size: 14px;
+                        margin-right: 10px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          &.menu-item {
+            padding: 0 30px;
+            color: @default-white;
+            font-size: @font-size-lg;
+            &.checked {
+              background-color: @blue-4;
+            }
+          }
+          .px-caret-down {
+            margin-left: 5px;
+          }
+          &.menu-lang {
+            position: relative;
+            color: @default-white;
+            line-height: 60px;
+            .px-dropdown-menubar-navbar {
+              padding: 0;
+            }
+            .px-dropdown-menu {
+              top: 60px;
+              left: auto;
+              right: 0;
+              a.selected {
+                color: @default-blue;
+              }
+            }
+          }
+          &.menu-user {
+            position: relative;
+            color: @default-white;
+            margin-right: 15px;
+            padding: 0 5px;
+            .font-paletx {
+              margin: 0 5px;
+            }
+            .px-dropdown-menubar-navbar {
+              padding: 0;
+            }
+            .px-dropdown-menu {
+              top: 60px;
+              left: auto;
+              right: 0;
+              .font-paletx {
+                margin-right: 15px;
+              }
+            }
+          }
+          .font-paletx {
+            font-size: @font-size-lg;
+          }
+        }
+      }
+    }
+  }
+  .main-content {
+    width: 100%;
+    height: calc(100% - 50px);
+    display: flex;
+    position: fixed;
+    padding: 0;
+    box-sizing: border-box;
+    .sideBar {
+      overflow-y: auto;
+      border-right: solid 1px @gray-grade-7;
+      overflow-x: hidden;
+      background: @gray-grade-8;
+      position: relative;
+      width: 13%;
+      transition: all 500ms;
+    }
+    .content {
+      padding: 20px 35px 35px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      overflow-x: hidden;
+      transition: all 500ms;
+      width: 87%;
+      position: relative;
+      > .side-switch {
+        color: @gray-grade-7;
+        position: absolute;
+        font-size: 42px;
+        bottom: 0;
+        left: 0;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    &.sideBar-hidden .sideBar {
+      transform: translateX(-100%);
+      width: 0;
+    }
+    &.sideBar-hidden .content {
+      width: 100%;
+    }
+  }
+}

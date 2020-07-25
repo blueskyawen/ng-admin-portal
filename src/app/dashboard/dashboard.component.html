@@ -1,0 +1,30 @@
+<div class="dashboard">
+  <div class="clusters">
+    <div class="header">
+      <span class="font-paletx px-cluster_p_20"></span>{{'dashboard.clusters' | translate}}
+    </div>
+    <div class="content">
+      <div class="cluster" *ngFor="let cluster of clusters" (click)="selectCluster(cluster)"
+           [class.selected]="curCluster.name === cluster.name">
+        <div class="cluster-name">{{cluster.name}}</div>
+        <div class="cluster-action">
+          <span class="state">{{'dashboard.health' | translate}}</span>
+          <span class="font-paletx px-click_20" title="{{'dashboard.goClusterManage' | translate}}" (click)="toClusterManage()"></span>
+        </div>
+      </div>
+      <div class="cluster add-cluster">
+        <span class="font-paletx px-plus"></span>
+        <span class="state">{{'dashboard.addCluster' | translate}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="cluster-detail">
+    <div class="header">
+      <span class="font-paletx px-overview_20"></span>{{'dashboard.overview' | translate}}
+    </div>
+    <div class="content">
+      <cluster-dashboard *ngIf="curCluster" [clusterData]="curCluster"></cluster-dashboard>
+      <px-loading class="loading" *ngIf="!curCluster"></px-loading>
+    </div>
+  </div>
+</div>

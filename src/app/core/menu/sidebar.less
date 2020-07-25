@@ -1,0 +1,56 @@
+@import '../../../css/config';
+
+.sideBars {
+  background-color: @gray-grade-8;
+  .sidebar-group {
+    width: 100%;
+    .sidebar-item  {
+      padding: 12px 0;
+      font-size: @default-font-size;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      .menu-icon {
+        color: @gray-grade-5;
+        margin-right: 10px;
+      }
+      &.group-header {
+        padding-left: 20px;
+        font-weight: bold;
+        font-size: @default-font-size;
+      }
+      &.second-sidebar {
+        padding-left: 35px;
+        &.has-third-menu {
+          justify-content: space-between;
+          &.router-link-active {
+            background: @gray-grade-8;
+            color: @blue-6;
+            border-left: none;
+          }
+          .px-angle_down_16,
+          .px-angle_up_16 {
+            margin-right: 5px;
+          }
+        }
+        &.router-link-active {
+          .menu-icon {
+            color: @blue-6;
+          }
+        }
+      }
+      &.third-sidebar {
+        padding-left: 60px;
+      }
+      &:hover {
+        cursor: pointer;
+        background: @blue-1;
+      }
+      &.router-link-active {
+        background: @default-white;
+        color: @blue-6;
+        border-left: solid 3px @blue-6;
+      }
+    }
+  }
+}
