@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import {StorageService, NoticeReportService} from './core';
-
+import {StorageService} from './core';
+import { en_US, zh_CN, NzI18nService } from 'ng-zorro-antd'
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'app-root',
@@ -14,9 +14,8 @@ export class AppComponent {
   noticeObj: any;
 
   constructor(private translate: TranslateService, public storageService: StorageService,
-              public noticeReportService: NoticeReportService) {
+              private nzI18nService: NzI18nService) {
     this.setAppDefaultLang();
-    this.initNoticeReport();
   }
 
   setAppDefaultLang() {
@@ -28,22 +27,8 @@ export class AppComponent {
     }
     this.translate.setDefaultLang(this.lang);
     this.translate.use(this.lang);
+    this.nzI18nService.setLocale(this.lang === 'zh' ? zh_CN : en_US);
     $('#langTranslate').attr('lang', this.lang);
-  }
-
-  initNoticeReport() {
-    this.noticeReportService.getNoticeReport().subscribe((notice: any) => {
-      if (notice.type === 'success') {
-        this.noticeObj = {type: 'success', title: notice.title || this.translate.instant('success'),
-          detail: notice.msg || this.translate.instant('successMsg')};
-      } else if (notice.type === 'error') {
-        this.noticeObj = {type: 'error', title: notice.title || this.translate.instant('error'),
-          detail: notice.msg || this.translate.instant('errorMsg')};
-      } else {
-        this.noticeObj = {type: 'warning', title: notice.title || this.translate.instant('warn'),
-          detail: notice.msg || this.translate.instant('warnMsg')};
-      }
-    });
   }
 
 }

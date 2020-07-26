@@ -13,6 +13,12 @@ import { DashboardModule } from './dashboard/dashboard.module';
 
 import { AppComponent } from './app.component';
 
+import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
+/** 配置 angular i18n **/
+import { registerLocaleData } from '@angular/common';
+import zh from '@angular/common/locales/zh';
+registerLocaleData(zh);
+
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -41,7 +47,7 @@ export function appInitializerFactory(translate: TranslateService, injector: Inj
   ],
   imports: [
     BrowserModule, CoreModule, ShareModule, AppRoutingModule, LoginModule, DashboardModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule, NgZorroAntdModule,
     TranslateModule.forRoot({
         loader: {
           provide: TranslateLoader,
@@ -57,7 +63,8 @@ export function appInitializerFactory(translate: TranslateService, injector: Inj
       useFactory: appInitializerFactory,
       deps: [TranslateService, Injector],
       multi: true
-    }
+    },
+    [ { provide: NZ_I18N, useValue: zh_CN } ]
   ],
   bootstrap: [AppComponent]
 })

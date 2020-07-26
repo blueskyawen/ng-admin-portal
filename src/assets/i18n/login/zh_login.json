@@ -8,6 +8,10 @@
     "loginSucesss": "登录成功",
     "loginFail": "登录失败",
     "about": "关于",
-    "loginOut": "退出登录"
+    "loginOut": "退出登录",
+    "inputUser": "请输入用户名!",
+    "inputPassword": "请输入密码!",
+    "forgetPw": "忘记密码",
+    "registerNow": "现在注册"
   }
 }

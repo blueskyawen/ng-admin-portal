@@ -6,6 +6,7 @@
   "errorMsg": "Opertion error notice!",
   "warn": "Warn",
   "warnMsg": "Opertion waring notice!",
-  "cluster": "Cluster"
+  "cluster": "Cluster",
+  "or": "or"
 }
 

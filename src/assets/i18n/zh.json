@@ -1,4 +1,13 @@
 {
+	"back": "返回",
+	"success": "成功",
+	"successMsg": "操作成功, 3秒后自动消失!",
+	"error": "错误",
+	"errorMsg": "操作失败通知!",
+	"warn": "警告",
+	"warnMsg": "操作警告通知!",
+	"cluster": "集群",
+	"or": "或",
 	"dashboard": {
 		"clusters": "集群列表",
 		"overview": "集群概览",
@@ -34,7 +43,11 @@
 		"loginSucesss": "登录成功",
 		"loginFail": "登录失败",
 		"about": "关于",
-		"loginOut": "退出登录"
+		"loginOut": "退出登录",
+		"inputUser": "请输入用户名!",
+		"inputPassword": "请输入密码!",
+		"forgetPw": "忘记密码",
+		"registerNow": "现在注册"
 	},
 	"menu": {
 		"clusterManage": {
@@ -103,13 +116,5 @@
 			"subscrption": "订阅管理"
 		},
 		"dashboard": "主页"
-	},
-	"back": "返回",
-	"success": "成功",
-	"successMsg": "操作成功, 3秒后自动消失!",
-	"error": "错误",
-	"errorMsg": "操作失败通知!",
-	"warn": "警告",
-	"warnMsg": "操作警告通知!",
-	"cluster": "集群"
+	}
 }

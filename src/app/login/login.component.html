@@ -1,49 +1,46 @@
 <div class="login-bg">
   <div class="login-form">
-    <form #loginForm="ngForm">
-      <px-form-item>
-        <px-form-item-label></px-form-item-label>
-        <px-input-wrap>
-          <h2>Admin Portal</h2>
-        </px-input-wrap>
-      </px-form-item>
-      <px-form-item notShowOption>
-        <px-form-item-label>
-          <span class="font-paletx px-user_20"></span>
-        </px-form-item-label>
-        <px-input-wrap>
-          <px-text-input width="320px" name="userName" type="text" [(ngModel)]="loginData.name"
-                         placeholder="{{'login.user' | translate}}" bindForm>
-          </px-text-input>
-        </px-input-wrap>
-      </px-form-item>
-      <px-form-item>
-        <px-form-item-label>
-          <span class="font-paletx px-user_security_20"></span>
-        </px-form-item-label>
-        <px-input-wrap>
-          <px-text-input width="320px" name="password" type="password" [(ngModel)]="loginData.password"
-                         placeholder="{{'login.password' | translate}}" bindForm>
-          </px-text-input>
-        </px-input-wrap>
-      </px-form-item>
-      <px-form-item>
-        <px-form-item-label></px-form-item-label>
-        <px-input-wrap>
-          <div class="check_lang">
-            <px-checkbox name="remember" [(ngModel)]="loginData.remember">
-              <span>{{'login.remember' | translate}}</span>
-            </px-checkbox>
-            <a href="javascript:void(0)" (click)="switchLang()">{{langTitle}}</a>
-          </div>
-        </px-input-wrap>
-      </px-form-item>
-      <px-form-btns>
-        <button pxButton type="button" class="ui-button-primary login-btn" label="{{'login.login' | translate}}"
-                loadinglabel="{{'login.logining' | translate}}" [state]="buttonState"
-                [disabled]="loginForm.invalid" (click)="goLogin()"></button>
-      </px-form-btns>
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <h2>Admin Portal</h2>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group [nzPrefix]="prefixUser">
+            <input type="text" nz-input formControlName="userName" placeholder="{{'login.user' | translate}}">
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('userName').dirty && validateForm.get('userName').errors">
+            {{'login.inputUser' | translate}}
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group [nzPrefix]="prefixLock">
+            <input type="password" nz-input formControlName="password" placeholder="{{'login.password' | translate}}">
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('password').dirty && validateForm.get('password').errors">
+            {{'login.inputPassword' | translate}}
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <label nz-checkbox formControlName="remember">
+            <span class="login-text">{{'login.remember' | translate}}</span>
+          </label>
+          <a class="login-form-forgot" (click)="switchLang()">{{langTitle}}</a>
+          <button nz-button class="login-form-button" [nzType]="'primary'" [nzLoading]="loginLoading">
+            {{loginBtnLabel}}
+          </button>
+          <a href="" class="login-text">{{'login.forgetPw' | translate}}</a>
+          <span class="login-or">{{'or' | translate}}</span>
+          <a href="" class="login-text">{{'login.registerNow' | translate}}</a>
+        </nz-form-control>
+      </nz-form-item>
     </form>
+    <ng-template #prefixUser><i nz-icon type="user"></i></ng-template>
+    <ng-template #prefixLock><i nz-icon type="lock"></i></ng-template>
   </div>
 </div>
 

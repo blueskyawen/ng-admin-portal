@@ -7,6 +7,7 @@
 	"warn": "Warn",
 	"warnMsg": "Opertion waring notice!",
 	"cluster": "Cluster",
+	"or": "or",
 	"dashboard": {
 		"clusters": "Clusters",
 		"overview": "Cluster Overview",
@@ -42,7 +43,11 @@
 		"loginSucesss": "Login Sucesss",
 		"loginFail": "Login Fail",
 		"about": "About",
-		"loginOut": "Login Out"
+		"loginOut": "Login Out",
+		"inputUser": "Please input your username!",
+		"inputPassword": "Please input your Password!",
+		"forgetPw": "Forgot password",
+		"registerNow": "Register now"
 	},
 	"menu": {
 		"clusterManage": {

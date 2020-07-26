@@ -47,7 +47,7 @@
             position: relative;
             width: 60px;
             color: @default-white;
-            .font-paletx {
+            .px-service {
               font-size: @font-size-xl;
             }
             &:hover {
@@ -77,16 +77,28 @@
           &.menu-lang {
             position: relative;
             color: @default-white;
-            line-height: 60px;
-            .px-dropdown-menubar-navbar {
-              padding: 0;
+            line-height: 50px;
+            a {
+              color: @default-white;
             }
-            .px-dropdown-menu {
-              top: 60px;
-              left: auto;
-              right: 0;
-              a.selected {
+            .dropdown-menubar-navbar {
+              padding: 0 20px;
+              height: 50px;
+              display: inline-block;
+              i {
+                font-size: 18px;
+              }
+            }
+            .dropdown-menu {
+              width: 80px;
+              .dropdown-menu-item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
                 color: @default-blue;
+                i {
+                  color: @default-blue;
+                }
               }
             }
           }
@@ -144,9 +156,9 @@
       > .side-switch {
         color: @gray-grade-7;
         position: absolute;
-        font-size: 42px;
+        font-size: 36px;
         bottom: 0;
-        left: 0;
+        left: 2px;
         &:hover {
           cursor: pointer;
         }

@@ -6,7 +6,7 @@
     <div class="app-menu">
       <div class="menu-items">
         <div class="menu-icon">
-          <span class="font-paletx px-service"></span>
+          <span nz-icon type="appstore" theme="outline" class="px-service"></span>
           <div class="menu-plane">
             <menu-panel></menu-panel>
           </div>
@@ -19,23 +19,23 @@
              (click)="clickMenu('clusterManage')">{{'menu.clusterManage.name' | translate}}</div>
       </div>
       <div class="menu-items">
-        <div class="menu-lang px-dropdown-menubar px-toggle-by-click">
-          <a name="changeLang" class="px-dropdown-menubar-navbar" href="javascript:void(0);">
-            <span class="font-paletx" [ngClass]="{'px-chinese_20': lang === 'zh','px-english_20': lang === 'en'}"></span>
-            <span class="font-paletx px-caret-down"></span>
-          </a>
-          <ul class="px-dropdown-menu">
-            <li>
-              <a name ="selectChinese" [class.selected]="lang === 'zh'" href="javascript:void(0);" (click)="switchLang()">
-                <span class="font-paletx px-chinese_20 span-font-size"></span> 中文
-              </a>
-            </li>
-            <li>
-              <a name ="selectEnglish" [class.selected]="lang === 'en'" href="javascript:void(0);" (click)="switchLang()">
-                <span class="font-paletx px-english_20 span-font-size"></span> EN&nbsp;
-              </a>
-            </li>
-          </ul>
+        <div class="menu-lang">
+          <nz-dropdown [nzTrigger]="'click'" [nzPlacement]="'bottomRight'">
+            <a nz-dropdown class="dropdown-menubar-navbar">
+              <i nz-icon [type]="lang === 'zh' ? 'bold' : 'italic'" theme="outline"></i>
+              <i class="px-caret-down" nz-icon type="caret-down"></i>
+            </a>
+            <ul nz-menu style="width: 100px">
+              <li nz-menu-item [ngStyle]="langSelectStyle('zh')" (click)="switchLang()">
+                <span>中文</span>
+                <i nz-icon type="check" theme="outline" *ngIf="lang === 'zh'"></i>
+              </li>
+              <li nz-menu-item [ngStyle]="langSelectStyle('en')"  (click)="switchLang()">
+                <span>EN</span>
+                <i nz-icon type="check" theme="outline" *ngIf="lang === 'en'"></i>
+              </li>
+            </ul>
+          </nz-dropdown>
         </div>
         <div class="menu-user px-dropdown-menubar px-toggle-by-click">
           <a name="user-manage" class="px-dropdown-menubar-navbar" href="javascript:void(0);">
@@ -67,9 +67,9 @@
       <system-manage-sidebar *ngIf="curMenu === 'sysManage'"></system-manage-sidebar>
     </div>
     <div class="content">
-      <span *ngIf="curMenu !== 'dashboard'" class="font-paletx side-switch"
-            [ngClass]="{'px-left': showSidebar, 'px-right': !showSidebar}"
-            (click)="toggleSidebar()"></span>
+      <li *ngIf="curMenu !== 'dashboard'" nz-icon [type]="showSidebar ? 'left-circle' : 'right-circle'"
+          theme="fill" class="side-switch"
+            (click)="toggleSidebar()"></li>
       <router-outlet></router-outlet>
     </div>
   </div>

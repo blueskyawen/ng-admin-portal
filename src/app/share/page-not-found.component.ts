@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
     <div class="not-found-page">
       <div class="not-found">
         <div class="image-bg"></div>
-        <button pxButton type="button" class="ui-button-info" label="{{'back' | translate}}" (click)="goBack()"></button>
       </div>
     </div>
   `,

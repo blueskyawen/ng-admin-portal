@@ -36,6 +36,15 @@ export class FullComponent implements OnInit {
   ngOnInit() {
   }
 
+  langSelectStyle(lang: string) {
+    return {
+      'display': 'flex',
+      'align-items': 'center',
+      'justify-content': 'space-between',
+      'color': this.lang === lang ? '#108ee9' : 'rgba(0,0,0,.65)'
+    }
+  }
+
   initObserveUrl() {
     this.router.events.pipe(
       filter(e => e instanceof NavigationEnd))
