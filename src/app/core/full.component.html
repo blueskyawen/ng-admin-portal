@@ -22,41 +22,44 @@
         <div class="menu-lang">
           <nz-dropdown [nzTrigger]="'click'" [nzPlacement]="'bottomRight'">
             <a nz-dropdown class="dropdown-menubar-navbar">
-              <i nz-icon [type]="lang === 'zh' ? 'bold' : 'italic'" theme="outline"></i>
+              <span class="svg-lang">
+                <svg class="icon" style="width: .8em;height: .8em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2686"><path d="M160 144a32 32 0 0 0-32 32V864a32 32 0 0 0 32 32h688a32 32 0 0 0 32-32V176a32 32 0 0 0-32-32H160z m0-64h688a96 96 0 0 1 96 96V864a96 96 0 0 1-96 96H160a96 96 0 0 1-96-96V176a96 96 0 0 1 96-96zM482.176 262.272h59.616v94.4h196v239.072h-196v184.416h-59.616v-184.416H286.72v-239.04h195.456V262.24z m-137.504 277.152h137.504v-126.4H344.64v126.4z m197.12 0h138.048v-126.4H541.76v126.4z" p-id="2687"></path></svg>
+              </span>
               <i class="px-caret-down" nz-icon type="caret-down"></i>
             </a>
-            <ul nz-menu style="width: 100px">
+            <ul nz-menu>
               <li nz-menu-item [ngStyle]="langSelectStyle('zh')" (click)="switchLang()">
+                <span style="margin-right: 15px">
+                  <svg class="icon" style="font-size: 24px;width: .8em;height: .8em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2686"><path d="M160 144a32 32 0 0 0-32 32V864a32 32 0 0 0 32 32h688a32 32 0 0 0 32-32V176a32 32 0 0 0-32-32H160z m0-64h688a96 96 0 0 1 96 96V864a96 96 0 0 1-96 96H160a96 96 0 0 1-96-96V176a96 96 0 0 1 96-96zM482.176 262.272h59.616v94.4h196v239.072h-196v184.416h-59.616v-184.416H286.72v-239.04h195.456V262.24z m-137.504 277.152h137.504v-126.4H344.64v126.4z m197.12 0h138.048v-126.4H541.76v126.4z" p-id="2687"></path></svg></span>
                 <span>中文</span>
-                <i nz-icon type="check" theme="outline" *ngIf="lang === 'zh'"></i>
               </li>
               <li nz-menu-item [ngStyle]="langSelectStyle('en')"  (click)="switchLang()">
+                <span style="margin-right: 15px">
+                  <svg class="icon" style="font-size: 24px;width: .8em;height: .8em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2909"><path d="M229.248 704V337.504h271.744v61.984h-197.76v81.28h184v61.76h-184v99.712h204.768V704h-278.72z m550.496 0h-70.24v-135.488c0-28.672-1.504-47.232-4.48-55.648a39.04 39.04 0 0 0-14.656-19.616 41.792 41.792 0 0 0-24.384-7.008c-12.16 0-23.04 3.328-32.736 10.016-9.664 6.656-16.32 15.488-19.872 26.496-3.584 11.008-5.376 31.36-5.376 60.992V704h-70.24v-265.504h65.248v39.008c23.168-30.016 52.32-44.992 87.488-44.992 15.52 0 29.664 2.784 42.496 8.352 12.832 5.6 22.56 12.704 29.12 21.376 6.592 8.672 11.2 18.496 13.76 29.504 2.56 11.008 3.872 26.752 3.872 47.264V704zM160 144a32 32 0 0 0-32 32V864a32 32 0 0 0 32 32h688a32 32 0 0 0 32-32V176a32 32 0 0 0-32-32H160z m0-64h688a96 96 0 0 1 96 96V864a96 96 0 0 1-96 96H160a96 96 0 0 1-96-96V176a96 96 0 0 1 96-96z" p-id="2910"></path></svg>
+                </span>
                 <span>EN</span>
-                <i nz-icon type="check" theme="outline" *ngIf="lang === 'en'"></i>
               </li>
             </ul>
           </nz-dropdown>
         </div>
-        <div class="menu-user px-dropdown-menubar px-toggle-by-click">
-          <a name="user-manage" class="px-dropdown-menubar-navbar" href="javascript:void(0);">
-            <span class="font-paletx px-user_20"></span>
-            <span class="user-name">{{userName}}</span>
-            <span class="font-paletx px-caret-down"></span>
-          </a>
-          <ul class="px-dropdown-menu">
-            <li>
-              <a name ="about" href="javascript:void(0);" routerLink="/about">
-                <span class="font-paletx px-about"></span>
+        <div class="menu-user">
+          <nz-dropdown [nzTrigger]="'click'" [nzPlacement]="'bottomRight'">
+            <a nz-dropdown class="dropdown-menubar-navbar">
+              <span class="px-user" nz-icon type="user" theme="outline"></span>
+              <span class="user-name">{{userName}}</span>
+              <i class="px-caret-down" nz-icon type="caret-down"></i>
+            </a>
+            <ul nz-menu>
+              <li nz-menu-item style="" routerLink="/about">
+                <span class="px-user" nz-icon type="info-circle" theme="outline"></span>
                 <span>{{'login.about' | translate}}</span>
-              </a>
-            </li>
-            <li>
-              <a name ="loginOut" href="javascript:void(0);" (click)="loginOut()">
-                <span class="font-paletx px-logout_20"></span>
+              </li>
+              <li nz-menu-item (click)="loginOut()">
+                <span class="px-user" nz-icon type="logout" theme="outline"></span>
                 <span>{{'login.loginOut' | translate}}</span>
-              </a>
-            </li>
-          </ul>
+              </li>
+            </ul>
+          </nz-dropdown>
         </div>
       </div>
     </div>

@@ -240,6 +240,11 @@ export class ClusterDashboardComponent implements OnInit, OnDestroy, AfterViewIn
     } : {};
   }
 
+  alarmIcon() {
+    return (this.clusterData.alarms[0].value || this.clusterData.alarms[1].value) ? 'frown' :
+        (this.clusterData.alarms[2].value || this.clusterData.alarms[3].value) ? 'meh' : 'smile';
+  }
+
   initChartData() {
     this.setIopsChartOption();
     this.setBytesChartOption();

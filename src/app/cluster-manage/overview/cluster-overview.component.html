@@ -1,7 +1,12 @@
-<!--<px-content-header header= "{{'menu.clusterManage.overview' | translate}}">
-  <p-breadcrumb [model]="links"></p-breadcrumb>
-</px-content-header>-->
+<nz-breadcrumb>
+  <nz-breadcrumb-item>
+    <a routerLink="{{links[0].routerLink}}">{{links[0].label}}</a>
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item>
+    {{'menu.clusterManage.overview' | translate}}
+  </nz-breadcrumb-item>
+</nz-breadcrumb>`
 <div class="cluster-content">
   <cluster-dashboard *ngIf="clusterData" [clusterData]="clusterData"></cluster-dashboard>
-  <!--<px-loading class="loading" *ngIf="!clusterData"></px-loading>-->
+  <nz-spin *ngIf="!clusterData" class="loading" [nzSize]="'large'"></nz-spin>
 </div>

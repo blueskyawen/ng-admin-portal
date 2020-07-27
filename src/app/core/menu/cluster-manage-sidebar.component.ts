@@ -16,7 +16,7 @@ export class ClusterManageSidebarComponent implements OnInit {
       children: [
         {
           name: 'dashboard',
-          icon: 'px-dashboard',
+          icon: 'dashboard',
           active: true,
           url: '/main/cluster/overview',
           label: this.translate.instant('menu.clusterManage.overview')
@@ -28,14 +28,14 @@ export class ClusterManageSidebarComponent implements OnInit {
       children: [
         {
           name: 'pool',
-          icon: 'px-cloud_environment',
+          icon: 'cloud',
           active: false,
           url: '/main/cluster/blockStorage/pool',
           label: this.translate.instant('menu.clusterManage.storagePool')
         },
         {
           name: 'blockStorage',
-          icon: 'px-cloud_container_p_20',
+          icon: 'inbox',
           active: false,
           label: this.translate.instant('menu.clusterManage.blockStorage'),
           children: [
@@ -73,7 +73,7 @@ export class ClusterManageSidebarComponent implements OnInit {
         },
         {
           name: 'fileStorage',
-          icon: 'px-other_20',
+          icon: 'file',
           active: false,
           label: this.translate.instant('menu.clusterManage.fileStorage'),
           children: [
@@ -116,35 +116,35 @@ export class ClusterManageSidebarComponent implements OnInit {
       children: [
         {
           name: 'topology',
-          icon: 'px-topology_20',
+          icon: 'share-alt',
           active: false,
           url: '/main/cluster/system/topology',
           label: this.translate.instant('menu.clusterManage.topology')
         },
         {
           name: 'server',
-          icon: 'px-server',
+          icon: 'layout',
           active: false,
           url: '/main/cluster/system/server',
           label: this.translate.instant('menu.clusterManage.server')
         },
         {
           name: 'switch',
-          icon: 'px-switchboard_20',
+          icon: 'fork',
           active: false,
           url: '/main/cluster/system/switch',
           label: this.translate.instant('menu.clusterManage.switch')
         },
         {
           name: 'disk',
-          icon: 'px-cloud_hard_disk',
+          icon: 'wallet',
           active: false,
           url: '/main/cluster/system/disk',
           label: this.translate.instant('menu.clusterManage.disk')
         },
         {
           name: 'cachePool',
-          icon: 'px-cloud_host_20',
+          icon: 'gold',
           active: false,
           url: '/main/cluster/system/cachePool',
           label: this.translate.instant('menu.clusterManage.cachePool')
@@ -156,7 +156,7 @@ export class ClusterManageSidebarComponent implements OnInit {
       children: [
         {
           name: 'performance',
-          icon: 'px-mysql_20',
+          icon: 'line-chart',
           active: false,
           label: this.translate.instant('menu.clusterManage.performance'),
           children: [
@@ -176,7 +176,7 @@ export class ClusterManageSidebarComponent implements OnInit {
         },
         {
           name: 'alarm',
-          icon: 'px-alarm_p_20',
+          icon: 'alert',
           active: false,
           label: this.translate.instant('menu.clusterManage.alarm'),
           children: [
@@ -196,21 +196,21 @@ export class ClusterManageSidebarComponent implements OnInit {
         },
         {
           name: 'log',
-          icon: 'px-project_20',
+          icon: 'file-pdf',
           active: false,
           url: '/main/cluster/moniter/log',
           label: this.translate.instant('menu.clusterManage.log')
         },
         {
           name: 'taskList',
-          icon: 'px-cascade_20',
+          icon: 'tags',
           active: false,
           url: '/main/cluster/moniter/taskList',
           label: this.translate.instant('menu.clusterManage.taskList')
         },
         {
           name: 'config',
-          icon: 'px-configure_m_20',
+          icon: 'setting',
           active: false,
           label: this.translate.instant('menu.clusterManage.config'),
           children: [

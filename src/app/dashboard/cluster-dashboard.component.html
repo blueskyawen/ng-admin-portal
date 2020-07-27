@@ -12,7 +12,7 @@
     <div class="view-item">
       <div class="child-chart"  [routerLink]="serverUrls['alarm']">
         <div class="alam-head" [ngClass]="alarmGradeClass()">
-          <span class="font-paletx px-health_degree"></span>
+          <span class="px-health_degree" nz-icon [type]="alarmIcon()"></span>
         </div>
         <div class="alam-content">
           <div class="alarms">
@@ -37,7 +37,7 @@
         <div class="serve-header">{{server.label}}</div>
         <div class="serve-content">
           <div class="serve-total">
-            <span class="font-paletx {{server.icon}}"></span>
+            <span class="font-paletx"nz-icon type="{{server.icon}}"></span>
             <span>{{server.total}}</span>
           </div>
           <div class="serve-active">

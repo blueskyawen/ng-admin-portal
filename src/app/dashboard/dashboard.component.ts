@@ -27,17 +27,17 @@ export class DashboardComponent implements OnInit {
         ];
         item.servers = [
           {name: 'mon', label: 'MON', total: item.mon.total,
-            active: item.mon.active, icon: 'px-view_control'},
+            active: item.mon.active, icon: 'save'},
           {name: 'server', label: this.translate.instant('menu.clusterManage.server'), total: item.server.total,
-            active: item.server.active, icon: 'px-server'},
+            active: item.server.active, icon: 'layout'},
           {name: 'pool', label: this.translate.instant('menu.clusterManage.storagePool'), total: item.pool.total,
-            active: item.pool.active, icon: 'px-cloud_environment'},
+            active: item.pool.active, icon: 'cloud'},
           {name: 'disk', label: this.translate.instant('menu.clusterManage.disk'), total: item.disk.total,
-            active: item.disk.active, icon: 'px-cloud_hard_disk'},
+            active: item.disk.active, icon: 'wallet'},
           {name: 'iscsi', label: 'ISCSI', total: item.iscsi.total,
-            active: item.iscsi.active, icon: 'px-elasticsearch_20'},
+            active: item.iscsi.active, icon: 'project'},
           {name: 'mds', label: 'MDS', total: item.mds.total,
-            active: item.mds.active, icon: 'px-host_20'}
+            active: item.mds.active, icon: 'robot'}
         ];
         return item;
       });

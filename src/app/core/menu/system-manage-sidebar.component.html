@@ -3,8 +3,8 @@
     <div *ngFor="let item of sidebarCfgs">
       <div class="sidebar-item second-sidebar" (click)="clickSecondMenu(item)"
            [ngClass]="{'router-link-active': item.active, 'has-third-menu': item.children}">
-        <span><span class="menu-icon font-paletx {{item.icon}}"></span>{{item.label}}</span>
-        <span *ngIf="item.children" class="font-paletx" [ngClass]="{'px-angle_down_16': !item.expand, 'px-angle_up_16': item.expand}"></span>
+        <span><span class="menu-icon" nz-icon [type]="item.icon" theme="outline"></span>{{item.label}}</span>
+        <span *ngIf="item.children" nz-icon [type]="item.expand ? 'up' : 'down'" theme="outline" class="font-paletx"></span>
       </div>
       <div *ngIf="item.children && item.expand">
         <div *ngFor="let item2 of item.children" class="sidebar-item third-sidebar" [routerLink]="[item2.url]"

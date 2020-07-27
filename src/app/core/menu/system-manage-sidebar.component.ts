@@ -13,28 +13,28 @@ export class SystemManageSidebarComponent implements OnInit {
   sidebarCfgs: any[] = [
     {
       name: 'profile',
-      icon: 'px-user_p_20',
+      icon: 'user',
       active: true,
       url: '/main/system/profile',
       label: this.translate.instant('menu.sysManage.profile')
     },
     {
       name: 'user',
-      icon: 'px-project_user_20',
+      icon: 'team',
       active: false,
       url: '/main/system/user',
       label: this.translate.instant('menu.sysManage.user')
     },
     {
       name: 'strategy',
-      icon: 'px-objects_p_20',
+      icon: 'compass',
       active: false,
       url: '/main/system/strategy',
       label: this.translate.instant('menu.sysManage.strategy')
     },
     {
       name: 'version',
-      icon: 'px-copy_16',
+      icon: 'pic-center',
       active: false,
       label: this.translate.instant('menu.sysManage.version'),
       children: [
@@ -54,14 +54,14 @@ export class SystemManageSidebarComponent implements OnInit {
     },
     {
       name: 'snmp',
-      icon: 'px-view_control',
+      icon: 'link',
       active: false,
       url: '/main/system/snmp',
       label: this.translate.instant('menu.sysManage.snmp')
     },
     {
       name: 'alarm',
-      icon: 'px-Alarm_level_w_16',
+      icon: 'alert',
       active: false,
       label: this.translate.instant('menu.sysManage.alarm'),
       children: [
@@ -87,7 +87,7 @@ export class SystemManageSidebarComponent implements OnInit {
     },
     {
       name: 'journalCenter',
-      icon: 'px-order_management_1',
+      icon: 'global',
       active: false,
       label: this.translate.instant('menu.sysManage.journalCenter'),
       children: [
@@ -113,35 +113,35 @@ export class SystemManageSidebarComponent implements OnInit {
     },
     {
       name: 'license',
-      icon: 'px-department_20',
+      icon: 'security-scan',
       active: false,
       url: '/main/system/license',
       label: this.translate.instant('menu.sysManage.license')
     },
     {
       name: 'certificate',
-      icon: 'px-navigation_P_32',
+      icon: 'insurance',
       active: false,
       url: '/main/system/certificate',
       label: this.translate.instant('menu.sysManage.certificate')
     },
     {
       name: 'haConfig',
-      icon: 'px-node_resource_p_20',
+      icon: 'database',
       active: false,
       url: '/main/system/haConfig',
       label: this.translate.instant('menu.sysManage.haConfig')
     },
     {
       name: 'port',
-      icon: 'px-port_16',
+      icon: 'export',
       active: false,
       url: '/main/system/port',
       label: this.translate.instant('menu.sysManage.port')
     },
     {
       name: 'backup',
-      icon: 'px-backups_20',
+      icon: 'copy',
       active: false,
       label: this.translate.instant('menu.sysManage.backup'),
       children: [
@@ -167,7 +167,7 @@ export class SystemManageSidebarComponent implements OnInit {
     },
     {
       name: 'subscrption',
-      icon: 'px-recovery_plan_20',
+      icon: 'book',
       active: false,
       url: '/main/system/subscrption',
       label: this.translate.instant('menu.sysManage.subscrption')
