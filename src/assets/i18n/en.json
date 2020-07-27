@@ -1,4 +1,13 @@
 {
+	"back": "Back",
+	"success": "Success",
+	"successMsg": "Opertion success, notice will hide after 3 seconds!",
+	"error": "Error",
+	"errorMsg": "Opertion error notice!",
+	"warn": "Warn",
+	"warnMsg": "Opertion waring notice!",
+	"cluster": "Cluster",
+	"or": "or",
 	"dashboard": {
 		"clusters": "Clusters",
 		"overview": "Cluster Overview",
@@ -107,14 +116,5 @@
 			"subscrption": "Subscrption"
 		},
 		"dashboard": "Dashboard"
-	},
-	"back": "Back",
-	"success": "Success",
-	"successMsg": "Opertion success, notice will hide after 3 seconds!",
-	"error": "Error",
-	"errorMsg": "Opertion error notice!",
-	"warn": "Warn",
-	"warnMsg": "Opertion waring notice!",
-	"cluster": "Cluster",
-	"or": "or"
+	}
 }

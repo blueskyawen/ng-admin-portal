@@ -6,9 +6,9 @@
   border: solid 1px @gray-grade-7;
   border-radius: 2px;
   padding: 10px 20px;
-  width: 300px;
-  height: 200px;
+  max-width: 500px;
   .menu-header {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     font-size: 14px;
@@ -20,6 +20,43 @@
           &.px-back {
             font-size: 14px;
             margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+  .menu-content {
+    width: 100%;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 800px;
+    min-width: 500px;
+    .menus {
+      .menu-title {
+        color: @font-gray-dark;
+      }
+      .menu-item {
+        color: @font-gray-light;
+        font-size: @font-size-sm;
+        &:hover {
+          cursor: pointer;
+        }
+        .menu-name {
+          > i {
+            font-size: @font-size-xl;
+            margin-right: 15px;
+          }
+          > span {
+            margin-right: 30px;
+          }
+        }
+        .menu-pick {
+          &:hover {
+            color: @default-red;
+          }
+          &.picked {
+            color: @default-red;
           }
         }
       }
