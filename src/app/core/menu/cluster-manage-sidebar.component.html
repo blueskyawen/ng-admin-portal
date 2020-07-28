@@ -4,7 +4,7 @@
     <div *ngFor="let menu of menuGroup.children">
       <div class="sidebar-item second-sidebar" (click)="clickSecondMenu(menu)"
            [ngClass]="{'router-link-active': menu.active, 'has-third-menu': menu.children}">
-        <span><span class="menu-icon" nz-icon [type]="menu.icon" theme="outline"></span>{{menu.label}}</span>
+        <span class="item-name"><span class="menu-icon" nz-icon [type]="menu.icon" theme="outline"></span>{{menu.label}}</span>
         <span *ngIf="menu.children" class="font-paletx" nz-icon [type]="menu.expand ? 'up' : 'down'" theme="outline"></span>
       </div>
       <div *ngIf="menu.children && menu.expand">

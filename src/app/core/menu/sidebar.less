@@ -21,6 +21,12 @@
       }
       &.second-sidebar {
         padding-left: 35px;
+        > .item-name {
+          display: inline-block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
         &.has-third-menu {
           justify-content: space-between;
           &.router-link-active {
@@ -40,6 +46,12 @@
       }
       &.third-sidebar {
         padding-left: 60px;
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+        box-sizing: border-box;
       }
       &:hover {
         cursor: pointer;
