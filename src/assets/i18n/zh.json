@@ -1,4 +1,14 @@
 {
+	"back": "返回",
+	"success": "成功",
+	"successMsg": "操作成功, 3秒后自动消失!",
+	"error": "错误",
+	"errorMsg": "操作失败通知!",
+	"warn": "警告",
+	"warnMsg": "操作警告通知!",
+	"cluster": "集群",
+	"or": "或",
+	"one": "个",
 	"dashboard": {
 		"clusters": "集群列表",
 		"overview": "集群概览",
@@ -109,15 +119,5 @@
 		"dashboard": "主页",
 		"rollbackPick": "撤销已收藏菜单",
 		"picked": "已收藏"
-	},
-	"back": "返回",
-	"success": "成功",
-	"successMsg": "操作成功, 3秒后自动消失!",
-	"error": "错误",
-	"errorMsg": "操作失败通知!",
-	"warn": "警告",
-	"warnMsg": "操作警告通知!",
-	"cluster": "集群",
-	"or": "或",
-	"one": "个"
+	}
 }
