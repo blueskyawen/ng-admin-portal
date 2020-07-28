@@ -65,6 +65,8 @@
       "backupPolicy": "Backup Policy",
       "subscrption": "Subscrption"
     },
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "rollbackPick": "Rollback picked menus",
+    "picked": "Picked"
   }
 }

@@ -2,20 +2,21 @@
   <div class="menu-header">
     <span>主菜单</span>
     <span>
-      <span class="px-back" nz-icon type="rollback" theme="outline" title="撤销已收藏菜单"></span>
-      <span>已收藏 {{pickMenus.length}} / 5 个</span>
+      <span class="px-back" nz-icon type="rollback" theme="outline" title="{{'menu.rollbackPick' | translate}}"
+            (click)="rollbackPicked()"></span>
+      <span>{{'menu.picked' | translate}} {{storageService.pickedMenus.length}} / 5 {{'one' | translate}}</span>
     </span>
   </div>
   <div class="menu-content">
     <div class="menus" *ngFor="let menu of menuList">
       <div class="menu-title">{{menu.label}}</div>
-      <div class="menu-item" *ngFor="let item of menu.children">
+      <div class="menu-item" *ngFor="let item of menu.children" routerLink="{{item.url}}" (click)="close()">
         <span class="menu-name">
           <i nz-icon [type]="item.icon" theme="outline"></i>
           <span>{{item.label}}</span>
         </span>
-        <i class="menu-pick" [class.picked]="pickMenus.includes(item.name)" nz-icon type="heart"
-           [theme]="pickMenus.includes(item.name) ? 'fill' : 'outline'"></i>
+        <i class="menu-pick" [class.picked]="isPicked(item)" nz-icon type="heart"
+           [theme]="isPicked(item) ? 'fill' : 'outline'" (click)="pickMenu($event, item)"></i>
       </div>
     </div>
   </div>

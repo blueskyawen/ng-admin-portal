@@ -52,8 +52,8 @@ export class DashboardComponent implements OnInit {
   }
 
   toClusterManage() {
-    window.localStorage['clusterName'] = this.curCluster.name;
-    window.localStorage['clusterId'] = this.curCluster.id;
+    this.storageService.setLocalStorage('clusterName', this.curCluster.name);
+    this.storageService.setLocalStorage('clusterId', this.curCluster.id);
     this.router.navigate(['/main/cluster']);
   }
 

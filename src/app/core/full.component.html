@@ -5,18 +5,17 @@
     </div>
     <div class="app-menu">
       <div class="menu-items">
-        <div class="menu-icon">
-          <span nz-icon type="appstore" theme="outline" class="px-service"></span>
-          <div class="menu-plane">
-            <menu-panel></menu-panel>
+        <div class="menu-icon" (mouseleave)="showPanel = false">
+          <span nz-icon type="appstore" theme="outline" class="px-service"
+                (mouseenter)="showPanel = true"></span>
+          <div class="menu-plane" [class.show-panel]="showPanel">
+            <menu-panel (closePanel)="showPanel = false"></menu-panel>
           </div>
         </div>
-        <div class="menu-item" [class.checked]="curMenu === 'dashboard'"
-             (click)="clickMenu('dashboard')">{{'menu.dashboard' | translate}}</div>
-        <div class="menu-item" [class.checked]="curMenu === 'sysManage'"
-             (click)="clickMenu('sysManage')">{{'menu.sysManage.name' | translate}}</div>
-        <div class="menu-item" [class.checked]="curMenu === 'clusterManage'"
-             (click)="clickMenu('clusterManage')">{{'menu.clusterManage.name' | translate}}</div>
+        <div class="menu-item" [class.checked]="curUrl === '/main/dashboard'"
+             routerLink="/main/dashboard">{{'menu.dashboard' | translate}}</div>
+        <div class="menu-item" *ngFor="let pickMenu of storageService.pickedMenus"
+             [class.checked]="pickMenu.url === curUrl" routerLink="{{pickMenu.url}}">{{pickMenu.label}}</div>
       </div>
       <div class="menu-items">
         <div class="menu-lang">

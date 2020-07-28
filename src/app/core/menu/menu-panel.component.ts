@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import {StorageService} from '../storage.service';
 
 @Component({
   selector: 'menu-panel',
@@ -181,10 +182,38 @@ export class MenuPanelComponent implements OnInit {
       ]
     }
   ];
-  pickMenus: string[] = ['user', 'blockStorage'];
-  constructor(private translate: TranslateService) { }
+  @Output() closePanel = new EventEmitter<boolean>();
+
+  constructor(private translate: TranslateService, public storageService: StorageService) {
+  }
 
   ngOnInit() {
+  }
+
+  close() {
+    this.closePanel.emit(true);
+  }
+
+  pickMenu(event: any, item: any) {
+    event.stopPropagation();
+    var itemIndex = this.storageService.pickedMenus.findIndex(menu => menu.name === item.name);
+    if (itemIndex !== -1) {
+      this.storageService.pickedMenus.splice(itemIndex, 1);
+    } else {
+      if (this.storageService.pickedMenus.length >= 5) return;
+      this.storageService.pickedMenus.push(item);
+    }
+    this.storageService.setPickedMenus();
+  }
+
+  isPicked(item: any) {
+    return this.storageService.pickedMenus.length === 0 ? false :
+        this.storageService.pickedMenus.map(x => x.name).includes(item.name);
+  }
+
+  rollbackPicked() {
+    this.storageService.pickedMenus = [];
+    this.storageService.setPickedMenus();
   }
 
 }

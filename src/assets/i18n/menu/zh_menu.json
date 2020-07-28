@@ -65,6 +65,8 @@
       "backupPolicy": "备份策略",
       "subscrption": "订阅管理"
     },
-    "dashboard": "主页"
+    "dashboard": "主页",
+    "rollbackPick": "撤销已收藏菜单",
+    "picked": "已收藏"
   }
 }

@@ -4,13 +4,13 @@ import {HttpEvent, HttpInterceptor, HttpHeaders, HttpHandler, HttpRequest,
 import {Observable, throwError as observableThrowError, of} from 'rxjs';
 import {catchError, finalize, tap} from 'rxjs/operators';
 import { StorageService } from '../storage.service';
-import { NoticeReportService } from '../notice-report.service';
+import { NzNotificationService } from 'ng-zorro-antd';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class AddHeaderInterceptor implements HttpInterceptor {
   constructor(public storageService: StorageService,
-              public noticeReportService: NoticeReportService,
+              public notification: NzNotificationService,
               private translate: TranslateService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -35,13 +35,13 @@ export class AddHeaderInterceptor implements HttpInterceptor {
         error => {
           if (error instanceof HttpErrorResponse) {
             if (error.status === 500) {
-              this.noticeReportService.reportError({ title: this.translate.instant('innerError') });
+              this.notification.create('error', this.translate.instant('innerError'),'');
             } else {
               if (error.status >= 400) {
-                this.noticeReportService.reportError({
-                  message: error.error ? error.error.error || error.error.message ||
+                this.notification.create('error', this.translate.instant('error'),
+                    error.error ? error.error.error || error.error.message ||
                     (error.error.constructor === String ? error.error : JSON.stringify(error.error)) :
-                    error.message || JSON.stringify(error) });
+                    error.message || JSON.stringify(error) || this.translate.instant('errorMsg'));
               }
             }
             return observableThrowError(error);

@@ -8,6 +8,7 @@
 	"warnMsg": "Opertion waring notice!",
 	"cluster": "Cluster",
 	"or": "or",
+	"rollbackPick": "Rollback picked menus",
 	"dashboard": {
 		"clusters": "Clusters",
 		"overview": "Cluster Overview",

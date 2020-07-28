@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ClusterManageService} from '../cluster-manage.service';
+import {StorageService} from '../../core';
 
 @Component({
   selector: 'cluster-overview',
@@ -17,9 +18,10 @@ export class ClusterOverviewComponent implements OnInit {
   clusterId: string;
   clusterData: any;
 
-  constructor(private translate: TranslateService, private clusterManageService: ClusterManageService) {
-    this.links[0].label = `${this.links[0].label}: ${window.localStorage['clusterName']}`;
-    this.clusterId = window.localStorage['clusterId'];
+  constructor(private translate: TranslateService, private clusterManageService: ClusterManageService,
+              public storageService: StorageService) {
+    this.links[0].label = `${this.links[0].label}: ${this.storageService.getLocalStorage('clusterName')}`;
+    this.clusterId = this.storageService.getLocalStorage('clusterId');
   }
 
   ngOnInit() {

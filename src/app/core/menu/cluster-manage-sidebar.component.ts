@@ -253,7 +253,7 @@ export class ClusterManageSidebarComponent implements OnInit {
 
   constructor(private translate: TranslateService, public storageService: StorageService,
               private router: Router) {
-    this.clusterName = window.localStorage['clusterName'];
+    this.clusterName = this.storageService.getLocalStorage('clusterName');
   }
 
   ngOnInit() {

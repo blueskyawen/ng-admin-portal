@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {StorageService} from './storage.service';
 import {Router, NavigationEnd} from '@angular/router';
 import {LoginService} from '../login/login.service';
+import {TranslateService} from '@ngx-translate/core';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -12,23 +13,19 @@ export class FullComponent implements OnInit {
   lang: string;
   userName = 'admin';
   showSidebar = false;
-  menuConfig: any = {
-    dashboard: {url: '/main/dashboard'},
-    sysManage: {url: '/main/system/profile'},
-    clusterManage: {url: '/main/cluster'}
-  };
   curMenu: string;
+  curUrl: string;
   menuMap: any = {
     dashboard: 'dashboard',
     system: 'sysManage',
     cluster: 'clusterManage'
   };
   sideBarShowMap = ['sysManage', 'clusterManage'];
+  showPanel: boolean = false;
 
   constructor(public storageService: StorageService, private router: Router,
-              private loginService: LoginService) {
+              private loginService: LoginService, private translate: TranslateService) {
     this.lang = this.storageService.getAppLanguage();
-    this.curMenu = 'dashboard';
     this.initObserveUrl();
 
   }
@@ -49,6 +46,7 @@ export class FullComponent implements OnInit {
     this.router.events.pipe(
       filter(e => e instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
+        this.curUrl = event.url;
         this.curMenu = event.url ? this.menuMap[event.url.split('/')[2]] : 'dashboard';
         this.showSidebar = this.sideBarShowMap.includes(this.curMenu);
         setTimeout(() => {
@@ -79,9 +77,4 @@ export class FullComponent implements OnInit {
     this.storageService.emitSideBarShow(this.showSidebar ? 'show' : 'hide');
   }
 
-  clickMenu(menuType: string) {
-    this.curMenu = menuType;
-    this.showSidebar = this.sideBarShowMap.includes(this.curMenu);
-    this.router.navigate([this.menuConfig[menuType].url]);
-  }
 }

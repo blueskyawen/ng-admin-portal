@@ -5,58 +5,83 @@
   color: @gray-grade-4;
   border: solid 1px @gray-grade-7;
   border-radius: 2px;
-  padding: 10px 20px;
-  max-width: 500px;
+  padding: 5px 0 20px;
+  max-width: 600px;
+  max-height: 900px;
+  overflow-x: hidden;
+  overflow-y: auto;
   .menu-header {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: @default-font-size;
     align-items: center;
+    padding: 10px 30px;
+    box-sizing: border-box;
     > span {
       &:last-child {
         span {
           font-size: 12px;
           &.px-back {
-            font-size: 14px;
+            font-size: @default-font-size;
             margin-right: 10px;
+            &:hover {
+              cursor: pointer;
+              color: @hover-blue;
+            }
           }
         }
       }
     }
   }
   .menu-content {
-    width: 100%;
     display: flex;
-    overflow-x: hidden;
-    overflow-y: auto;
-    max-height: 800px;
-    min-width: 500px;
+    padding-right: 20px;
     .menus {
+      width: 240px;
+      padding-left: 30px;
+      box-sizing: border-box;
+      + .menus {
+        border-left: solid 1px @gray-grade-8;
+      }
       .menu-title {
         color: @font-gray-dark;
+        width: 100%;
+        font-weight: bold;
+        margin-bottom: 5px;
       }
       .menu-item {
+        width: 100%;
         color: @font-gray-light;
-        font-size: @font-size-sm;
+        font-size: @default-font-size;
+        padding: 4px 20px 4px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        box-sizing: border-box;
         &:hover {
           cursor: pointer;
+          background: @blue-1;
+          .menu-pick {
+            visibility: visible;
+          }
         }
         .menu-name {
           > i {
-            font-size: @font-size-xl;
+            font-size: 16px;
             margin-right: 15px;
-          }
-          > span {
-            margin-right: 30px;
           }
         }
         .menu-pick {
+          font-size: 16px;
+          visibility: hidden;
           &:hover {
-            color: @default-red;
+            color: @red-5;
           }
           &.picked {
-            color: @default-red;
+            color: @red-5;
+            visibility: visible;
           }
         }
       }

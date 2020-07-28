@@ -50,23 +50,22 @@
             .px-service {
               font-size: @font-size-xl;
             }
-            &:hover {
-              .menu-plane {
-                display: block;
-              }
-            }
             .menu-plane {
               display: none;
               position: absolute;
               top: 100%;
-              left: 0;
+              left: 2px;
               z-index: 9999;
+              box-shadow: 1px 1px 5px @gray-grade-8;
+              &.show-panel {
+                display: block;
+              }
             }
           }
           &.menu-item {
-            padding: 0 30px;
+            padding: 0 20px;
             color: @default-white;
-            font-size: @font-size-lg;
+            font-size: @default-font-size;
             &.checked {
               background-color: @blue-4;
             }
@@ -157,6 +156,8 @@
       position: relative;
       width: 13%;
       transition: all 500ms;
+      box-sizing: border-box;
+      height: 100%;
     }
     .content {
       padding: 20px 35px 35px;
