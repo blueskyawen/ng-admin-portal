@@ -29,6 +29,7 @@
     "emailInvaild": "The input is not valid E-mail !",
     "agreement": "I have read the agreement",
     "registerSucesss": "Register Sucesss",
-    "editSucesss": "Edit Sucesss"
+    "editSucesss": "Edit Sucesss",
+    "noAccount": "No Account?"
   }
 }

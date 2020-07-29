@@ -5,9 +5,8 @@
     </div>
     <div class="app-menu">
       <div class="menu-items">
-        <div class="menu-icon" (mouseleave)="showPanel = false">
-          <span nz-icon type="appstore" theme="outline" class="px-service"
-                (mouseenter)="showPanel = true"></span>
+        <div class="menu-icon" (mouseleave)="showPanel = false" (mouseenter)="showPanel = true">
+          <span nz-icon type="appstore" theme="outline" class="px-service"></span>
           <div class="menu-plane" [class.show-panel]="showPanel">
             <menu-panel (closePanel)="showPanel = false"></menu-panel>
           </div>

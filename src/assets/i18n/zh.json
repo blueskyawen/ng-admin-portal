@@ -1,4 +1,16 @@
 {
+	"back": "返回",
+	"success": "成功",
+	"successMsg": "操作成功, 3秒后自动消失!",
+	"error": "错误",
+	"errorMsg": "操作失败通知!",
+	"warn": "警告",
+	"warnMsg": "操作警告通知!",
+	"cluster": "集群",
+	"or": "或",
+	"one": "个",
+	"save": "保存",
+	"saving": "保存中...",
 	"dashboard": {
 		"clusters": "集群列表",
 		"overview": "集群概览",
@@ -55,7 +67,8 @@
 		"emailInvaild": "输入电子邮件非法 !",
 		"agreement": "我已阅读协议",
 		"registerSucesss": "用户注册成功",
-		"editSucesss": "修改成功"
+		"editSucesss": "修改成功",
+		"noAccount": "没有帐号?"
 	},
 	"menu": {
 		"clusterManage": {
@@ -126,17 +139,5 @@
 		"dashboard": "主页",
 		"rollbackPick": "撤销已收藏菜单",
 		"picked": "已收藏"
-	},
-	"back": "返回",
-	"success": "成功",
-	"successMsg": "操作成功, 3秒后自动消失!",
-	"error": "错误",
-	"errorMsg": "操作失败通知!",
-	"warn": "警告",
-	"warnMsg": "操作警告通知!",
-	"cluster": "集群",
-	"or": "或",
-	"one": "个",
-	"save": "保存",
-	"saving": "保存中..."
+	}
 }

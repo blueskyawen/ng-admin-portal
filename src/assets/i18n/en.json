@@ -1,4 +1,16 @@
 {
+	"back": "Back",
+	"success": "Success",
+	"successMsg": "Opertion success, notice will hide after 3 seconds!",
+	"error": "Error",
+	"errorMsg": "Opertion error notice!",
+	"warn": "Warn",
+	"warnMsg": "Opertion waring notice!",
+	"cluster": "Cluster",
+	"or": "or",
+	"one": "",
+	"save": "Save",
+	"saving": "Saving...",
 	"dashboard": {
 		"clusters": "Clusters",
 		"overview": "Cluster Overview",
@@ -55,20 +67,9 @@
 		"emailInvaild": "The input is not valid E-mail !",
 		"agreement": "I have read the agreement",
 		"registerSucesss": "Register Sucesss",
-		"editSucesss": "Edit Sucesss"
+		"editSucesss": "Edit Sucesss",
+		"noAccount": "No Account?"
 	},
-	"back": "Back",
-	"success": "Success",
-	"successMsg": "Opertion success, notice will hide after 3 seconds!",
-	"error": "Error",
-	"errorMsg": "Opertion error notice!",
-	"warn": "Warn",
-	"warnMsg": "Opertion waring notice!",
-	"cluster": "Cluster",
-	"or": "or",
-	"one": "",
-	"save": "Save",
-	"saving": "Saving...",
 	"menu": {
 		"clusterManage": {
 			"name": "Cluster Manage",
