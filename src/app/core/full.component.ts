@@ -4,6 +4,7 @@ import {Router, NavigationEnd} from '@angular/router';
 import {LoginService} from '../login/login.service';
 import {TranslateService} from '@ngx-translate/core';
 import { filter } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   templateUrl: './full.component.html',
@@ -24,13 +25,18 @@ export class FullComponent implements OnInit {
   showPanel: boolean = false;
 
   constructor(public storageService: StorageService, private router: Router,
-              private loginService: LoginService, private translate: TranslateService) {
+              private loginService: LoginService, private translate: TranslateService,
+              private http: HttpClient) {
     this.lang = this.storageService.getAppLanguage();
     this.initObserveUrl();
 
   }
 
   ngOnInit() {
+    this.http.get('/api/author/curUser').subscribe((res: any) => {
+      this.userName = res.name;
+      this.storageService.setLocalStorage('loginUser', this.userName);
+    });
   }
 
   langSelectStyle(lang: string) {

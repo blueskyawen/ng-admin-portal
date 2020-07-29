@@ -30,11 +30,7 @@ const routes: Routes = [
       },
       {
         path: 'system',
-        children: [
-          {
-            path: '**', component: PageNotFoundComponent
-          }
-        ]
+        loadChildren: 'src/app/system-manage/system-manage.module#SystemManageModule'
       },
       { path: '**', component: PageNotFoundComponent }
     ]

@@ -17,4 +17,8 @@ export class LoginService {
   userLoginout(data: any): any {
     return this.http.post('/api/author/logout', data);
   }
+
+  userRegister(data: any): any {
+    return this.http.post('/api/author/register', data);
+  }
 }

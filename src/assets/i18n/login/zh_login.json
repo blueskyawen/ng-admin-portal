@@ -12,6 +12,23 @@
     "inputUser": "请输入用户名!",
     "inputPassword": "请输入密码!",
     "forgetPw": "忘记密码",
-    "registerNow": "现在注册"
+    "register": "注册",
+    "registering": "注册中...",
+    "cancel": "取消",
+    "registerNow": "现在注册",
+    "registerUser": "用户注册",
+    "confirmPw": "确认密码",
+    "phone": "电话号码",
+    "email": "电子邮件",
+    "userNameLimit": "只能包含字符和数字下划线, 长度: 3 ~ 10",
+    "userNameInvail": "用户名输入有误, 请查看提示说明 !",
+    "passwordExplain": "请输入密码 !",
+    "confirmPwExplain": "请确认你的密码 !",
+    "twoPwDiff": "两次密码输入不一致 !",
+    "phoneExplain": "请输入电话号码 !",
+    "emailInvaild": "输入电子邮件非法 !",
+    "agreement": "我已阅读协议",
+    "registerSucesss": "用户注册成功",
+    "editSucesss": "修改成功"
   }
 }

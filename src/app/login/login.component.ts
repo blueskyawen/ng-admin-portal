@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
     this.loginBtnLabel = this.translate.instant('login.logining');
     this.loginService.userLoginin(this.loginData).subscribe((res: any) => {
       this.router.navigate(['/main/dashboard']);
-      this.notification.create('success', this.translate.instant('login.loginSucesss'),'')
+      this.notification.create('success', this.translate.instant('login.loginSucesss'),'');
     }, error => {
       this.loginLoading = false;
       this.loginBtnLabel = this.translate.instant('login.login');
