@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { ShareModule } from '../share/share.module';
 
+import { ClusterManageModule } from '../cluster-manage/cluster-manage.module';
+
 import { DashboardComponent } from './dashboard.component';
-import { ClusterDashboardComponent } from './cluster-dashboard.component';
 
 @NgModule({
   imports: [
-    ShareModule
+    ShareModule, ClusterManageModule
   ],
-  declarations: [DashboardComponent, ClusterDashboardComponent ],
-  exports: [ClusterDashboardComponent]
+  declarations: [DashboardComponent ],
 })
 export class DashboardModule { }

@@ -10,5 +10,10 @@
   "or": "或",
   "one": "个",
   "save": "保存",
-  "saving": "保存中..."
+  "saving": "保存中...",
+  "add": "新增",
+  "adding": "新增中...",
+  "name": "名称",
+  "description": "描述",
+  "version": "版本"
 }

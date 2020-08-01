@@ -13,7 +13,7 @@
                 (click)="toClusterManage()"></span>
         </div>
       </div>
-      <div class="cluster add-cluster">
+      <div class="cluster add-cluster" (click)="visible=true">
         <span class="font-paletx" nz-icon type="plus"></span>
         <span class="state">{{'dashboard.addCluster' | translate}}</span>
       </div>
@@ -29,3 +29,7 @@
     </div>
   </div>
 </div>
+<nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="right" [nzWidth]="'40%'"
+           nzTitle="{{'dashboard.cluster.add' | translate}}" (nzOnClose)="visible = false">
+  <add-cluster (addClusterChange)="handleAddCluster($event)"></add-cluster>
+</nz-drawer>

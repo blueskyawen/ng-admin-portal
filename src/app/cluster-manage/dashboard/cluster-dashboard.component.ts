@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnDestroy, AfterViewInit, ViewChild, SimpleChanges, ChangeDetectorRef, NgZone } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { StorageService } from '../core';
+import { StorageService } from '../../core';
 import {Router} from "@angular/router";
 import { fromEvent } from 'rxjs';
 

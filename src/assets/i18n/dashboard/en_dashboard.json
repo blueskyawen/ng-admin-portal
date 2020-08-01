@@ -23,6 +23,11 @@
       "warning": "Warning",
       "prompt": "Prompt"
     },
-    "goClusterManage": "To Cluster Manage"
+    "goClusterManage": "To Cluster Manage",
+    "cluster": {
+      "add": "Add Cluster",
+      "publicNet": "Public Network",
+      "network": "Cluster Network"
+    }
   }
 }

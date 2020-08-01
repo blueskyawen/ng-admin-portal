@@ -1,0 +1,62 @@
+<div class="add-cluster">
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="clusterName" nzRequired>
+          <span>
+            {{'name' | translate}}
+            <i nz-icon nz-tooltip nzTitle="{{'login.userNameLimit' | translate}}" type="question-circle" theme="outline"></i>
+          </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="clusterName" formControlName="clusterName">
+        <nz-form-explain *ngIf="validateForm.get('clusterName').dirty && validateForm.get('clusterName').errors">
+          {{'login.userNameInvail' | translate}}
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="publicNet" nzRequired>
+        {{'dashboard.cluster.publicNet' | translate}}</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="publicNet" formControlName="publicNet">
+        <nz-form-explain *ngIf="validateForm.get('publicNet').dirty && validateForm.get('publicNet').errors">
+          {{'login.passwordExplain' | translate}}
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="network" nzRequired>
+        {{'dashboard.cluster.network' | translate}}</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="network" formControlName="network">
+        <nz-form-explain *ngIf="validateForm.get('network').dirty && validateForm.get('network').errors">
+          {{'login.passwordExplain' | translate}}
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="version" nzRequired>
+        {{'version' | translate}}</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="version" formControlName="version">
+        <nz-form-explain *ngIf="validateForm.get('version').dirty && validateForm.get('version').errors">
+          {{'login.passwordExplain' | translate}}
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description">{{'description' | translate}}</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <textarea rows="4" nz-input formControlName="description" id="description"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row style="margin-bottom:8px;">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button style="margin-right: 10px" nz-button nzType="primary" [nzLoading]="addLoading">
+          {{addBtnTitle}}</button>
+        <button nz-button nzType="info" (click)="cancel()">{{'login.cancel' | translate}}</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

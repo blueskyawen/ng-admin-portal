@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 export class DashboardComponent implements OnInit {
   clusters: any[];
   curCluster: any;
+  visible = false;
 
   constructor(private http: HttpClient, private translate: TranslateService,
               private storageService: StorageService, private router: Router) { }
@@ -55,6 +56,10 @@ export class DashboardComponent implements OnInit {
     this.storageService.setLocalStorage('clusterName', this.curCluster.name);
     this.storageService.setLocalStorage('clusterId', this.curCluster.id);
     this.router.navigate(['/main/cluster']);
+  }
+
+  handleAddCluster(result) {
+    this.visible = false;
   }
 
 }

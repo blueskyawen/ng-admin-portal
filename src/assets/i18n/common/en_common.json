@@ -10,6 +10,11 @@
   "or": "or",
   "one": "",
   "save": "Save",
-  "saving": "Saving..."
+  "saving": "Saving...",
+  "add": "Add",
+  "adding": "Adding...",
+  "name": "Name",
+  "description": "Description",
+  "version": "Version"
 }
 

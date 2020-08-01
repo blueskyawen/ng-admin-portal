@@ -23,6 +23,11 @@
       "warning": "次要告警",
       "prompt": "一般告警"
     },
-    "goClusterManage": "进入集群管理"
+    "goClusterManage": "进入集群管理",
+    "cluster": {
+      "add": "新增集群",
+      "publicNet": "公共网卡",
+      "network": "集群网络"
+    }
   }
 }
