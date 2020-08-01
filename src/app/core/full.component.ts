@@ -83,4 +83,8 @@ export class FullComponent implements OnInit {
     this.storageService.emitSideBarShow(this.showSidebar ? 'show' : 'hide');
   }
 
+  toHelp() {
+    window.open("http://github.com/blueskyawen/ng-admin-portal")
+  }
+
 }

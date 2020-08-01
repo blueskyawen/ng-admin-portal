@@ -15,5 +15,6 @@
   "adding": "新增中...",
   "name": "名称",
   "description": "描述",
-  "version": "版本"
+  "version": "版本",
+  "help": "帮助文档"
 }

@@ -15,6 +15,7 @@
   "adding": "Adding...",
   "name": "Name",
   "description": "Description",
-  "version": "Version"
+  "version": "Version",
+  "help": "Help Docs"
 }
 

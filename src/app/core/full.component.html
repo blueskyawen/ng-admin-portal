@@ -17,6 +17,9 @@
              [class.checked]="pickMenu.url === curUrl" routerLink="{{pickMenu.url}}">{{pickMenu.label}}</div>
       </div>
       <div class="menu-items">
+        <div class="menu-help" nzTitle="{{'help' | translate}}" nzPlacement="bottomRight" nz-tooltip (click)="toHelp()">
+          <span class="px-user" nz-icon type="book" theme="outline"></span>
+        </div>
         <div class="menu-lang">
           <nz-dropdown [nzTrigger]="'click'" [nzPlacement]="'bottomRight'">
             <a nz-dropdown class="dropdown-menubar-navbar">
