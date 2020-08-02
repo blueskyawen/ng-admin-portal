@@ -16,5 +16,6 @@
   "name": "名称",
   "description": "描述",
   "version": "版本",
-  "help": "帮助文档"
+  "help": "帮助文档",
+  "select": "请选择"
 }

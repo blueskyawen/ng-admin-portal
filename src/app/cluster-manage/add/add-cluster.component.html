@@ -20,7 +20,7 @@
       <nz-form-control [nzSm]="14" [nzXs]="24">
         <input nz-input id="publicNet" formControlName="publicNet">
         <nz-form-explain *ngIf="validateForm.get('publicNet').dirty && validateForm.get('publicNet').errors">
-          {{'login.passwordExplain' | translate}}
+          {{'dashboard.cluster.inputTip' | translate}}
         </nz-form-explain>
       </nz-form-control>
     </nz-form-item>
@@ -30,7 +30,7 @@
       <nz-form-control [nzSm]="14" [nzXs]="24">
         <input nz-input id="network" formControlName="network">
         <nz-form-explain *ngIf="validateForm.get('network').dirty && validateForm.get('network').errors">
-          {{'login.passwordExplain' | translate}}
+          {{'dashboard.cluster.inputTip' | translate}}
         </nz-form-explain>
       </nz-form-control>
     </nz-form-item>
@@ -38,9 +38,11 @@
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="version" nzRequired>
         {{'version' | translate}}</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24">
-        <input nz-input id="version" formControlName="version">
+        <nz-select id="gender" formControlName="version" nzPlaceHolder="{{'select' | translate}}">
+          <nz-option *ngFor="let option of versionOptions" [nzValue]="option.value" [nzLabel]="option.label"></nz-option>
+        </nz-select>
         <nz-form-explain *ngIf="validateForm.get('version').dirty && validateForm.get('version').errors">
-          {{'login.passwordExplain' | translate}}
+          {{'dashboard.cluster.selectVersion' | translate}}
         </nz-form-explain>
       </nz-form-control>
     </nz-form-item>

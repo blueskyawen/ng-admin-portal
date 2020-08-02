@@ -17,6 +17,7 @@
 	"description": "Description",
 	"version": "Version",
 	"help": "Help Docs",
+	"select": "Please select",
 	"dashboard": {
 		"clusters": "Clusters",
 		"overview": "Cluster Overview",
@@ -45,7 +46,9 @@
 		"cluster": {
 			"add": "Add Cluster",
 			"publicNet": "Public Network",
-			"network": "Cluster Network"
+			"network": "Cluster Network",
+			"inputTip": "Please input value",
+			"selectVersion": "Please select version"
 		}
 	},
 	"login": {

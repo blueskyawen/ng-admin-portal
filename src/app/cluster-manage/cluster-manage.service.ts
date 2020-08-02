@@ -12,4 +12,8 @@ export class ClusterManageService {
   getClusterById(id: string) {
     return this.http.get(`/api/cluster/list/${id}`);
   }
+
+  postAddCluster(data: any) {
+    return this.http.post('/api/cluster/list/add', data);
+  }
 }

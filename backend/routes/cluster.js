@@ -8,6 +8,15 @@ router.get('/list', function(req, res, next) {
   res.json(clusterList);
 });
 
+router.post('/list/add', function(req, res, next) {
+  var oneCluster = clusterList.clusters.find(function(cluster) { return cluster.id === req.params.id; });
+  if (oneCluster) {
+    res.json(oneCluster);
+  } else {
+    res.status(404).json({});
+  }
+});
+
 router.get('/list/:id', function(req, res, next) {
   var oneCluster = clusterList.clusters.find(function(cluster) { return cluster.id === req.params.id; });
   if (oneCluster) {

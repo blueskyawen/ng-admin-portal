@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import { NzNotificationService } from 'ng-zorro-antd';
+import { ClusterManageService } from '../cluster-manage.service';
 
 @Component({
   selector: 'add-cluster',
@@ -26,16 +27,22 @@ export class AddClusterComponent implements OnInit {
   };
   addLoading: boolean = false;
   addBtnTitle: string = this.translate.instant('add');
+  versionOptions = [
+    {label: 'V1.x', value: 'v1'},
+    {label: 'V2.x', value: 'v2'},
+    {label: 'V3.x', value: 'v3'}
+  ];
 
   constructor(private fb: FormBuilder, private translate: TranslateService,
-              private notification: NzNotificationService) { }
+              private notification: NzNotificationService,
+              private clusterManageService: ClusterManageService) { }
 
   ngOnInit() {
     this.validateForm = this.fb.group({
       clusterName      : [ null, [ Validators.required, Validators.pattern(/^\w{3,10}$/)] ],
       publicNet        : [ null, [ Validators.required ] ],
       network          : [ null, [ Validators.required ] ],
-      version          : [ null, [ Validators.required, Validators.pattern(/^1\d{10}$/) ] ],
+      version          : [ null, [ Validators.required ] ],
       description      : [ null ]
     });
   }
@@ -56,24 +63,22 @@ export class AddClusterComponent implements OnInit {
   }
 
   sendClusterAdd() {
-/*    this.reqData = {
-      "name": this.validateForm.get('userName').value,
-      "password": this.validateForm.get('password').value,
-      "phone": this.validateForm.get('phoneNumber').value,
-      "email": this.validateForm.get('email').value,
-      "agree": this.validateForm.get('agree').value
+    this.reqData = {
+      "name": this.validateForm.get('clusterName').value,
+      "publicNet": this.validateForm.get('publicNet').value,
+      "network": this.validateForm.get('network').value,
+      "version": this.validateForm.get('version').value,
+      "description": this.validateForm.get('description').value
     };
-    this.registerLoading = true;
-    this.registerBtnTitle = this.translate.instant('login.registering');
-    this.loginService.userRegister(this.reqData).subscribe((res: any) => {
+    this.addLoading = true;
+    this.addBtnTitle = this.translate.instant('adding');
+    this.clusterManageService.postAddCluster(this.reqData).subscribe((res: any) => {
       this.notification.create('success', this.translate.instant('login.registerSucesss'),'');
-      setTimeout(() => {
-        this.cancel();
-      }, 3000);
+      this.addClusterChange.emit('success');
     }, error => {
-      this.registerLoading = false;
-      this.registerBtnTitle = this.translate.instant('login.register');
-    });*/
+      this.addLoading = false;
+      this.addBtnTitle = this.translate.instant('add');
+    });
     this.addClusterChange.emit('cancel');
   }
 

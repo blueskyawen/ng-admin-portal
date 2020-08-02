@@ -27,7 +27,9 @@
     "cluster": {
       "add": "Add Cluster",
       "publicNet": "Public Network",
-      "network": "Cluster Network"
+      "network": "Cluster Network",
+      "inputTip": "Please input value",
+      "selectVersion": "Please select version"
     }
   }
 }
