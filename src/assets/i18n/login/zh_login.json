@@ -30,6 +30,8 @@
     "agreement": "我已阅读协议",
     "registerSucesss": "用户注册成功",
     "editSucesss": "修改成功",
-    "noAccount": "没有帐号?"
+    "noAccount": "没有帐号?",
+    "userExist": "用户名已存在",
+    "addUser": "新增用户"
   }
 }

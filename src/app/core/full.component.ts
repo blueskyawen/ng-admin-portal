@@ -73,7 +73,11 @@ export class FullComponent implements OnInit {
   }
 
   loginOut() {
-    this.loginService.userLoginout({user: this.userName}).subscribe((res: any) => {
+    let reqData = {
+      user: this.userName,
+      lastLogin: (new Date()).toString().split('(')[0]
+    };
+    this.loginService.userLoginout(reqData).subscribe((res: any) => {
       this.router.navigate(['/login']);
     });
   }

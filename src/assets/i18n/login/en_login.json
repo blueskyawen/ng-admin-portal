@@ -21,7 +21,7 @@
     "phone": "Phone Number",
     "email": "E-mail",
     "userNameLimit": "Support word, number and _, allowed length: 3 ~ 10",
-    "userNameInvail": "Input invail, please view the explain !",
+    "userNameInvail": "Input invaild, please view the explain !",
     "passwordExplain": "Please input your password !",
     "confirmPwExplain": "Please confirm your password !",
     "twoPwDiff": "Two passwords that you enter is inconsistent !",
@@ -30,6 +30,8 @@
     "agreement": "I have read the agreement",
     "registerSucesss": "Register Sucesss",
     "editSucesss": "Edit Sucesss",
-    "noAccount": "No Account?"
+    "noAccount": "No Account?",
+    "userExist": "The user name is existed !",
+    "addUser": "Add User"
   }
 }

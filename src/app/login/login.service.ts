@@ -10,6 +10,10 @@ export class LoginService {
   constructor(private http: HttpClient) {
   }
 
+  getUserList() {
+    return this.http.get(`/api/author/users`);
+  }
+
   userLoginin(data: any): any {
     return this.http.post('/api/author/login', data);
   }

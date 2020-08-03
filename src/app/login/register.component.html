@@ -12,7 +12,15 @@
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <input nz-input id="userName" formControlName="userName">
           <nz-form-explain *ngIf="validateForm.get('userName').dirty && validateForm.get('userName').errors">
-            {{'login.userNameInvail' | translate}}
+            <ng-container *ngIf="validateForm.get('userName').hasError('required')">
+              {{'login.inputUser' | translate}}
+            </ng-container>
+            <ng-container *ngIf="validateForm.get('userName').hasError('invalid')">
+              {{'login.userNameInvail' | translate}}
+            </ng-container>
+            <ng-container *ngIf="validateForm.get('userName').hasError('exist')">
+              {{'login.userExist' | translate}}
+            </ng-container>
           </nz-form-explain>
         </nz-form-control>
       </nz-form-item>

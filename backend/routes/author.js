@@ -26,9 +26,7 @@ router.post('/login', function(req, res, next) {
 });
 
 router.post('/register', function(req, res, next) {
-  var addUser = {active: false, id: Random.uuid(), ...req.body};
-/*  addUser.active = false;
-  addUser.id = Random.uuid();*/
+  var addUser = {active: false, id: Random.uuid(), lastLogin: '', ...req.body};
   fs.readFile(__dirname + "/../public/users.json", 'utf8', function (err, data) {
     data = JSON.parse( data );
     data.users.push(addUser);
@@ -66,10 +64,11 @@ router.post('/logout', function(req, res, next) {
   fs.readFile(__dirname + "/../public/users.json", 'utf8', function (err, data) {
     data = JSON.parse( data );
     var user = data.users.find(function(item) {
-      return item.name === reqData.name;
+      return item.name === reqData.user;
     });
     if (user) {
       user.active = false;
+      user.lastLogin = reqData.lastLogin;
       fs.writeFile(__dirname + "/../public/users.json", JSON.stringify(data), function(err) {
         if (err) {
           return res.status(500);

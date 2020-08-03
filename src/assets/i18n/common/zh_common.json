@@ -17,5 +17,9 @@
   "description": "描述",
   "version": "版本",
   "help": "帮助文档",
-  "select": "请选择"
+  "select": "请选择",
+  "confirm": "确定",
+  "cancel": "取消",
+  "delete": "删除",
+  "deleteMsg": "删除成功, 3秒后自动消失!"
 }

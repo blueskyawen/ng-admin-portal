@@ -9,9 +9,11 @@
         <div class="cluster-name">{{cluster.name}}</div>
         <div class="cluster-action">
           <span class="state">{{'dashboard.health' | translate}}</span>
-          <span class="font-paletx" nz-icon type="file-search" title="{{'dashboard.goClusterManage' | translate}}"
+          <span class="font-paletx px-detail" nz-icon type="file-search" title="{{'dashboard.goClusterManage' | translate}}"
                 (click)="toClusterManage()"></span>
         </div>
+        <span class="px-delete" nz-icon type="delete" title="{{'dashboard.cluster.delete' | translate}}"
+              (click)="toDeleteCluster(cluster)"></span>
       </div>
       <div class="cluster add-cluster" (click)="visible=true">
         <span class="font-paletx" nz-icon type="plus"></span>

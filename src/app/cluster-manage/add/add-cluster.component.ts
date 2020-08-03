@@ -32,6 +32,7 @@ export class AddClusterComponent implements OnInit {
     {label: 'V2.x', value: 'v2'},
     {label: 'V3.x', value: 'v3'}
   ];
+  clusterNames: string[] = [];
 
   constructor(private fb: FormBuilder, private translate: TranslateService,
               private notification: NzNotificationService,
@@ -39,11 +40,18 @@ export class AddClusterComponent implements OnInit {
 
   ngOnInit() {
     this.validateForm = this.fb.group({
-      clusterName      : [ null, [ Validators.required, Validators.pattern(/^\w{3,10}$/)] ],
+      clusterName      : [ null, [ Validators.required, this.checkNameValidator] ],
       publicNet        : [ null, [ Validators.required ] ],
       network          : [ null, [ Validators.required ] ],
       version          : [ null, [ Validators.required ] ],
       description      : [ null ]
+    });
+    this.getClusterList();
+  }
+
+  getClusterList() {
+    this.clusterManageService.getClusterList().subscribe((res: any) => {
+      this.clusterNames = res.clusters.map(item => item.name);
     });
   }
 
@@ -62,6 +70,16 @@ export class AddClusterComponent implements OnInit {
     return this.validateForm.valid && !this.validateForm.errors;
   }
 
+  checkNameValidator = (control: FormControl): { [ s: string ]: boolean } => {
+    if (!control.value) {
+      return { required: true };
+    } else if (!/^\w{3,10}$/.test(control.value)) {
+      return { invalid: true, error: true };
+    } else if (this.clusterNames.includes(control.value)) {
+      return { exist: true, error: true };
+    }
+  };
+
   sendClusterAdd() {
     this.reqData = {
       "name": this.validateForm.get('clusterName').value,
@@ -73,13 +91,12 @@ export class AddClusterComponent implements OnInit {
     this.addLoading = true;
     this.addBtnTitle = this.translate.instant('adding');
     this.clusterManageService.postAddCluster(this.reqData).subscribe((res: any) => {
-      this.notification.create('success', this.translate.instant('login.registerSucesss'),'');
+      this.notification.create('success', this.translate.instant('dashboard.cluster.addSuccess'),'');
       this.addClusterChange.emit('success');
     }, error => {
       this.addLoading = false;
       this.addBtnTitle = this.translate.instant('add');
     });
-    this.addClusterChange.emit('cancel');
   }
 
   cancel() {

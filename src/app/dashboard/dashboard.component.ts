@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { StorageService } from '../core';
 import {Router} from "@angular/router";
+import { NzModalService } from 'ng-zorro-antd';
+import { ClusterManageService } from '../cluster-manage/cluster-manage.service';
+import { NzNotificationService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'dashboard',
@@ -15,9 +18,15 @@ export class DashboardComponent implements OnInit {
   visible = false;
 
   constructor(private http: HttpClient, private translate: TranslateService,
-              private storageService: StorageService, private router: Router) { }
+              private storageService: StorageService, private router: Router,
+              private modalService: NzModalService, private clusterManageService: ClusterManageService,
+              private notification: NzNotificationService) { }
 
   ngOnInit() {
+    this.getClusterList();
+  }
+
+  getClusterList() {
     this.http.get('/api/cluster/list').subscribe((res: any) => {
       this.clusters = res.clusters.map(item => {
         item.alarms = [
@@ -60,6 +69,29 @@ export class DashboardComponent implements OnInit {
 
   handleAddCluster(result) {
     this.visible = false;
+    if (result === 'success') {
+      this.getClusterList();
+    }
+  }
+
+  toDeleteCluster(item: any) {
+    this.modalService.confirm({
+      nzTitle     : this.translate.instant('dashboard.cluster.delTitle', {name: item.name}),
+      nzContent   : '<b style="color: red;">'+
+          this.translate.instant('dashboard.cluster.delTip') +'</b>',
+      nzOkText    : this.translate.instant('confirm'),
+      nzOkType    : 'danger',
+      nzOnOk      : () => this.sureDeleteCluster(item),
+      nzCancelText: this.translate.instant('cancel'),
+      nzOnCancel  : () => console.log('Cancel')
+    });
+  }
+
+  sureDeleteCluster(item: any) {
+    this.clusterManageService.deleteCluster(item.id).subscribe((res: any) => {
+      this.notification.create('success', this.translate.instant('deleteMsg'),'');
+      this.getClusterList();
+    });
   }
 
 }

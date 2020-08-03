@@ -10,7 +10,15 @@
       <nz-form-control [nzSm]="14" [nzXs]="24">
         <input nz-input id="clusterName" formControlName="clusterName">
         <nz-form-explain *ngIf="validateForm.get('clusterName').dirty && validateForm.get('clusterName').errors">
-          {{'login.userNameInvail' | translate}}
+          <ng-container *ngIf="validateForm.get('clusterName').hasError('required')">
+            {{'login.inputUser' | translate}}
+          </ng-container>
+          <ng-container *ngIf="validateForm.get('clusterName').hasError('invalid')">
+            {{'login.userNameInvail' | translate}}
+          </ng-container>
+          <ng-container *ngIf="validateForm.get('clusterName').hasError('exist')">
+            {{'dashboard.cluster.nameExist' | translate}}
+          </ng-container>
         </nz-form-explain>
       </nz-form-control>
     </nz-form-item>

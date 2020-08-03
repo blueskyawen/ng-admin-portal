@@ -29,7 +29,12 @@
       "publicNet": "公共网卡",
       "network": "集群网络",
       "inputTip": "请输入正确的值",
-      "selectVersion": "请选择版本号"
+      "selectVersion": "请选择版本号",
+      "addSuccess": "新增集群成功",
+      "nameExist": "集群名已存在",
+      "delete": "删除集群",
+      "delTitle": "确认删除集群: {{name}} 吗?",
+      "delTip": "集群删除以后不能恢复"
     }
   }
 }

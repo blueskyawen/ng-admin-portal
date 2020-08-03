@@ -39,10 +39,11 @@
           background: @default-white;
           border: solid 1px @gray-grade-7;
           border-radius: 3px;
-          padding: 15px;
+          padding: 18px 15px 15px 15px;
           box-sizing: border-box;
           margin-right: 10px;
           cursor: pointer;
+          position: relative;
           .cluster-name {
             font-size: @default-font-size;
             height: 40%;
@@ -57,6 +58,19 @@
             font-size: @font-size-lg;
             .font-paletx {
               font-size: @font-size-xl;
+            }
+          }
+          .px-delete {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            &:hover {
+              transform: scale(1.2);
+            }
+          }
+          .px-detail {
+            &:hover {
+              transform: scale(1.2);
             }
           }
           &.selected {

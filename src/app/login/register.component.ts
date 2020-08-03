@@ -22,23 +22,34 @@ export class RegisterComponent implements OnInit {
     "password": "",
     "phone": "",
     "email": "",
-    "agree": true
+    "agree": true,
+    "role": "operator",
+    "clusters": [],
+    "createTime": ""
   };
   registerLoading: boolean = false;
   registerBtnTitle: string = this.translate.instant('login.register');
+  userNames: string[] = [];
 
   constructor(private fb: FormBuilder, private loginService: LoginService,
               private translate: TranslateService, private notification: NzNotificationService) { }
 
   ngOnInit() {
     this.validateForm = this.fb.group({
-      userName         : [ null, [ Validators.required, Validators.pattern(/^\w{3,10}$/)] ],
+      userName         : [ null, [ Validators.required, this.checkNameValidator] ],
       password         : [ null, [ Validators.required ] ],
       checkPassword    : [ null, [ Validators.required, this.confirmationValidator ] ],
       phoneNumberPrefix: [ '+86' ],
       phoneNumber      : [ null, [ Validators.required, Validators.pattern(/^1\d{10}$/) ] ],
       email            : [ null, [ Validators.email ] ],
       agree            : [ true ]
+    });
+    this.getUserList();
+  }
+
+  getUserList() {
+    this.loginService.getUserList().subscribe((res: any) => {
+      this.userNames = res.users.map(user => user.name);
     });
   }
 
@@ -63,7 +74,10 @@ export class RegisterComponent implements OnInit {
       "password": this.validateForm.get('password').value,
       "phone": this.validateForm.get('phoneNumber').value,
       "email": this.validateForm.get('email').value,
-      "agree": this.validateForm.get('agree').value
+      "agree": this.validateForm.get('agree').value,
+      "role": "operator",
+      "clusters": [],
+      "createTime": (new Date()).toString().split('(')[0]
     };
     this.registerLoading = true;
     this.registerBtnTitle = this.translate.instant('login.registering');
@@ -87,6 +101,16 @@ export class RegisterComponent implements OnInit {
       return { required: true };
     } else if (control.value !== this.validateForm.controls.password.value) {
       return { confirm: true, error: true };
+    }
+  };
+
+  checkNameValidator = (control: FormControl): { [ s: string ]: boolean } => {
+    if (!control.value) {
+      return { required: true };
+    } else if (!/^\w{3,10}$/.test(control.value)) {
+      return { invalid: true, error: true };
+    } else if (this.userNames.includes(control.value)) {
+      return { exist: true, error: true };
     }
   };
 
