@@ -8,7 +8,7 @@ import {StorageService} from '../storage.service';
   styleUrls: ['./menu-panel.component.less']
 })
 export class MenuPanelComponent implements OnInit {
-  menuList: any[] = [
+  s_menus: any[] = [
     {
       label: this.translate.instant('menu.sysManage.name'),
       children: [
@@ -182,7 +182,10 @@ export class MenuPanelComponent implements OnInit {
       ]
     }
   ];
+  menuList: any[] = JSON.parse(JSON.stringify(this.s_menus));
   @Output() closePanel = new EventEmitter<boolean>();
+  searchValue: string = '';
+  debounceTimer: any;
 
   constructor(private translate: TranslateService, public storageService: StorageService) {
   }
@@ -214,6 +217,18 @@ export class MenuPanelComponent implements OnInit {
   rollbackPicked() {
     this.storageService.pickedMenus = [];
     this.storageService.setPickedMenus();
+  }
+
+  searchChange() {
+    if (this.debounceTimer) {
+      clearTimeout(this.debounceTimer)
+    }
+    this.debounceTimer = setTimeout(() => {
+      for (let i = 0; i < this.menuList.length; i++) {
+        this.menuList[i].children = this.s_menus[i].children.filter(item => item.label.includes(this.searchValue));
+      }
+      this.debounceTimer = undefined;
+    },1000);
   }
 
 }

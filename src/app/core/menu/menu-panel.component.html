@@ -1,6 +1,9 @@
 <div class="menu-panel">
   <div class="menu-header">
-    <span>主菜单</span>
+    <span class="menu-search">
+      <i nz-icon type="search" theme="outline"></i>
+      <input type="text" [(ngModel)]="searchValue" (ngModelChange)="searchChange()" />
+    </span>
     <span>
       <span class="px-back" nz-icon type="rollback" theme="outline" title="{{'menu.rollbackPick' | translate}}"
             (click)="rollbackPicked()"></span>

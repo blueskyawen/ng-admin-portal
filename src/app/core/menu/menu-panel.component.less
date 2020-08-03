@@ -32,11 +32,24 @@
           }
         }
       }
+      &.menu-search {
+        position: relative;
+        > input {
+          border: none;
+          border-bottom: solid 1px @font-gray-lightest;
+          padding-left: 20px;
+          width: 120px;
+        }
+        i {
+          position: absolute;
+        }
+      }
     }
   }
   .menu-content {
     display: flex;
     padding-right: 20px;
+    padding-top: 10px;
     .menus {
       width: 240px;
       padding-left: 30px;
