@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getClusterList() {
-    this.http.get('/api/cluster/list').subscribe((res: any) => {
+    this.http.get('/api/cluster/list?curUser=true').subscribe((res: any) => {
       this.clusters = res.clusters.map(item => {
         item.alarms = [
           {name: this.translate.instant('dashboard.alarm.critical'), value: item.alarm.critical || 0, color: '#ea4335'},

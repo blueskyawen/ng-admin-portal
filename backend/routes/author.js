@@ -39,14 +39,14 @@ router.post('/register', function(req, res, next) {
   });
 });
 
-router.get('/users/:name', function(req, res, next) {
+router.get('/users/:id', function(req, res, next) {
   fs.readFile(__dirname + "/../public/users.json", 'utf8', function (err, data) {
     data = JSON.parse( data );
     var user = data.users.find(function(item) {
-      return item.name === req.params.name;
+      return item.id === req.params.id;
     });
     if (user) {
-      res.json({name: user.name, phone: user.phone, email: user.email, agree: user.agree});
+      res.json({id: user.id, name: user.name, phone: user.phone, email: user.email, agree: user.agree});
     } else {
       res.status(400);
     }
@@ -88,7 +88,7 @@ router.get('/curUser', function(req, res, next) {
       return item.active;
     });
     if (user) {
-      res.json({name: user.name});
+      res.json({name: user.name, id: user.id});
     } else {
       res.status(400);
     }

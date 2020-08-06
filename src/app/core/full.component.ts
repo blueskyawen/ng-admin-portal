@@ -36,6 +36,7 @@ export class FullComponent implements OnInit {
     this.http.get('/api/author/curUser').subscribe((res: any) => {
       this.userName = res.name;
       this.storageService.setLocalStorage('loginUser', this.userName);
+      this.storageService.setLocalStorage('loginUserId', res.id);
     });
   }
 

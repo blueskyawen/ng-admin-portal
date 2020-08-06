@@ -8,8 +8,8 @@ export class SystemManageService {
 
   constructor(private http: HttpClient) { }
 
-  getUserData(name: string) {
-    return this.http.get(`/api/author/users/${name}`);
+  getUserData(id: string) {
+    return this.http.get(`/api/author/users/${id}`);
   }
 
   editUserData(data: any) {

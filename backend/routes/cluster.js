@@ -9,7 +9,22 @@ var clusterList = require('../public/clusters');
 
 router.get('/list', function(req, res, next) {
   fs.readFile(__dirname + "/../public/clusters.json", 'utf8', function (err, data) {
-    res.end( data );
+    if (req.query.curUser) {
+      data = JSON.parse(data);
+      fs.readFile(__dirname + "/../public/users.json", 'utf8', function (err, data2) {
+        data2 = JSON.parse( data2 );
+        var user = data2.users.find(function(item) {
+          return item.active;
+        });
+        if (user) {
+          res.json({clusters: data.clusters.filter(item => user.clusters.includes(item.id))});
+        } else {
+          res.json(data);
+        }
+      });
+    } else {
+      res.end( data );
+    }
   });
 });
 
@@ -81,7 +96,7 @@ router.post('/list/add', function(req, res, next) {
           return item.active;
         });
         if (user) {
-          user.clusters.push(req.body.name);
+          user.clusters.push(addCluster.id);
           fs.writeFile(__dirname + "/../public/users.json", JSON.stringify(userData), function(err) {
             if (err) {
               return res.status(500);
@@ -106,7 +121,18 @@ router.delete('/list/:id', function(req, res, next) {
       if (err) {
         return res.status(500);
       }
-      res.json({result: 'ok'});
+      fs.readFile(__dirname + "/../public/users.json", 'utf8', function (err, data) {
+        userData = JSON.parse( data );
+        userData.users.forEach(function(item) {
+          item.clusters = item.clusters.filter(x => x !== req.params.id);
+        });
+        fs.writeFile(__dirname + "/../public/users.json", JSON.stringify(userData), function(err) {
+          if (err) {
+            return res.status(500);
+          }
+          res.json({result: 'ok'});
+        });
+      });
     });
   });
 });

@@ -36,8 +36,8 @@ export class UserConfigComponent implements OnInit {
       phoneNumber      : [ null, [ Validators.required, Validators.pattern(/^1\d{10}$/) ] ],
       email            : [ null, [ Validators.email ] ]
     });
-    let userName = this.storageService.getLocalStorage('loginUser');
-    this.systemManageService.getUserData(userName).subscribe((res: any) => {
+    let userId = this.storageService.getLocalStorage('loginUserId');
+    this.systemManageService.getUserData(userId).subscribe((res: any) => {
       this.userData = res;
       this.initFromData();
     });
