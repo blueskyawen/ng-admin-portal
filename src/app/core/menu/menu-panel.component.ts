@@ -156,7 +156,7 @@ export class MenuPanelComponent implements OnInit {
           label: this.translate.instant('menu.clusterManage.performance')
         },
         {
-          name: 'alarm',
+          name: 'sysAlarm',
           icon: 'alert',
           url: '/main/cluster/alarm/currentAlarm',
           label: this.translate.instant('menu.clusterManage.alarm')

@@ -1,3 +1,48 @@
-<p>
-  user-manage works!
-</p>
+<div class="user-manage">
+  <h2>{{'menu.sysManage.user' | translate}}</h2>
+  <div class="user-table">
+    <div class="oper-btn-group">
+      <button nz-button [nzType]="'primary'" (click)="toUserAdd()" class="oper-btn">
+        {{'add' | translate}}
+      </button>
+      <button nz-button [disabled]="disabledUserDel" [nzType]="'danger'" [nzLoading]="deleteWaiting" (click)="deleteUsers()">
+        {{'delete' | translate}}
+      </button>
+    </div>
+    <nz-table #usersTable [nzData]="displayUsers" nzBordered
+              (nzCurrentPageDataChange)="currentPageDataChange($event)"
+              (nzPageIndexChange)="refreshStatus()"
+              (nzPageSizeChange)="refreshStatus()">
+      <thead (nzSortChange)="sort($event)" nzSingleSort>
+      <tr>
+        <th nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
+        <th nzShowSort nzSortKey="name">{{'login.user' | translate}}</th>
+        <th nzShowSort nzSortKey="roleName">{{'login.role' | translate}}</th>
+        <th nzShowSort nzSortKey="phone">{{'login.phone' | translate}}</th>
+        <th nzShowSort nzSortKey="email">{{'login.email' | translate}}</th>
+        <th>{{'login.clusters' | translate}}</th>
+        <th nzShowSort nzSortKey="createTime">{{'login.createTime' | translate}}</th>
+        <th nzShowSort nzSortKey="lastLogin">{{'login.lastLogin' | translate}}</th>
+        <th style="min-width: 120px">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of usersTable.data">
+        <td nzShowCheckbox [(nzChecked)]="user.checked" [nzDisabled]="user.disabled" (nzCheckedChange)="refreshStatus()"></td>
+        <td>{{user.name}}</td>
+        <td>{{user.roleName}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.manageClusters}}</td>
+        <td>{{user.createTime}}</td>
+        <td>{{user.lastLogin}}</td>
+        <td style="min-width: 120px">
+          <nz-popconfirm [nzTitle]="'Sure to delete?'" (nzOnConfirm)="deleteUser(user)">
+            <a nz-popconfirm>Delete</a>
+          </nz-popconfirm>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>

@@ -93,7 +93,13 @@
 		"editSucesss": "修改成功",
 		"noAccount": "没有帐号?",
 		"userExist": "用户名已存在",
-		"addUser": "新增用户"
+		"addUser": "新增用户",
+		"role": "角色",
+		"createTime": "创建时间",
+		"lastLogin": "最后登录时间",
+		"clusters": "管理集群",
+		"manager": "管理者",
+		"operator": "运维者"
 	},
 	"menu": {
 		"clusterManage": {
