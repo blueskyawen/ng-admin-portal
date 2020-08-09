@@ -16,14 +16,14 @@
       <thead (nzSortChange)="sort($event)" nzSingleSort>
       <tr>
         <th nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
-        <th nzShowSort nzSortKey="name">{{'login.user' | translate}}</th>
-        <th nzShowSort nzSortKey="roleName">{{'login.role' | translate}}</th>
-        <th nzShowSort nzSortKey="phone">{{'login.phone' | translate}}</th>
+        <th nzWidth="100px" nzShowSort nzSortKey="name">{{'login.user' | translate}}</th>
+        <th nzWidth="80px" nzShowSort nzSortKey="roleName">{{'login.role' | translate}}</th>
+        <th nzWidth="150px" nzShowSort nzSortKey="phone">{{'login.phone' | translate}}</th>
         <th nzShowSort nzSortKey="email">{{'login.email' | translate}}</th>
         <th>{{'login.clusters' | translate}}</th>
         <th nzShowSort nzSortKey="createTime">{{'login.createTime' | translate}}</th>
         <th nzShowSort nzSortKey="lastLogin">{{'login.lastLogin' | translate}}</th>
-        <th style="min-width: 120px">Action</th>
+        <th nzWidth="120px">{{'action' | translate}}</th>
       </tr>
       </thead>
       <tbody>
@@ -32,17 +32,46 @@
         <td>{{user.name}}</td>
         <td>{{user.roleName}}</td>
         <td>{{user.phone}}</td>
-        <td>{{user.email}}</td>
+        <td>{{user.email || '--'}}</td>
         <td>{{user.manageClusters}}</td>
         <td>{{user.createTime}}</td>
         <td>{{user.lastLogin}}</td>
-        <td style="min-width: 120px">
-          <nz-popconfirm [nzTitle]="'Sure to delete?'" (nzOnConfirm)="deleteUser(user)">
-            <a nz-popconfirm>Delete</a>
-          </nz-popconfirm>
+        <td>
+          <button nz-button nzType="default" nzSize="small" style="margin-right: 5px" (click)="toEditUser(user)">
+            {{'edit' | translate}}
+          </button>
+          <nz-dropdown>
+            <button nz-button nz-dropdown nzSize="small"><i nz-icon type="ellipsis"></i></button>
+            <ul nz-menu>
+              <li nz-menu-item>
+                <a (click)="deleteUser(user)">{{'delete' | translate}}</a>
+              </li>
+              <li nz-menu-item>
+                <a (click)="toAddCluster(user)">{{'login.addCluster' | translate}}</a>
+              </li>
+            </ul>
+          </nz-dropdown>
         </td>
       </tr>
       </tbody>
     </nz-table>
   </div>
 </div>
+<nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="right" [nzWidth]="'40%'"
+           [nzTitle]="drawTitle" (nzOnClose)="visible = false">
+  <add-user *ngIf="visible" [type]="operType" [userData]="editData" (addUserChange)="handleAddUser($event)"></add-user>
+</nz-drawer>
+<nz-modal [(nzVisible)]="showClusterAdd" nzTitle="{{'login.addCluster' | translate}}"
+          (nzOnCancel)="addClusterCancel()" (nzOnOk)="addClusterOk()">
+  <form nz-form>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24">{{'login.clusters' | translate}}</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-select [nzMaxMultipleCount]="10" style="width: 100%" nzMode="multiple"
+                   nzPlaceHolder="{{'select' | translate}}" [(ngModel)]="clusters">
+          <nz-option *ngFor="let option of clusterOptions" [nzLabel]="option.name" [nzValue]="option.id"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-modal>

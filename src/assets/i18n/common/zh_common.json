@@ -21,5 +21,8 @@
   "confirm": "确定",
   "cancel": "取消",
   "delete": "删除",
-  "deleteMsg": "删除成功, 3秒后自动消失!"
+  "deleteMsg": "删除成功, 3秒后自动消失!",
+  "addMsg": "新增成功, 3秒后自动消失!",
+  "action": "操作",
+  "edit": "编辑"
 }

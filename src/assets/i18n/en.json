@@ -22,6 +22,9 @@
 	"cancel": "Cancel",
 	"delete": "Delete",
 	"deleteMsg": "Delete success, notice will hide after 3 seconds!",
+	"addMsg": "Add success, notice will hide after 3 seconds!",
+	"action": "Action",
+	"edit": "Edit",
 	"dashboard": {
 		"clusters": "Clusters",
 		"overview": "Cluster Overview",
@@ -99,7 +102,12 @@
 		"lastLogin": "Last Login",
 		"clusters": "Manage Clusters",
 		"manager": "Manager",
-		"operator": "Operator"
+		"operator": "Operator",
+		"addCluster": "Add Cluster",
+		"mutildelTitle": "Are you sure delete these users?",
+		"delTitle": "Are you sure delete user: {{name}} ?",
+		"delTip": "It can not recover after deletion",
+		"editUser": "Edit User"
 	},
 	"menu": {
 		"clusterManage": {

@@ -21,6 +21,9 @@
   "confirm": "Confirm",
   "cancel": "Cancel",
   "delete": "Delete",
-  "deleteMsg": "Delete success, notice will hide after 3 seconds!"
+  "deleteMsg": "Delete success, notice will hide after 3 seconds!",
+  "addMsg": "Add success, notice will hide after 3 seconds!",
+  "action": "Action",
+  "edit": "Edit"
 }
 

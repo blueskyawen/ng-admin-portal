@@ -38,6 +38,11 @@
     "lastLogin": "Last Login",
     "clusters": "Manage Clusters",
     "manager": "Manager",
-    "operator": "Operator"
+    "operator": "Operator",
+    "addCluster": "Add Cluster",
+    "mutildelTitle": "Are you sure delete these users?",
+    "delTitle": "Are you sure delete user: {{name}} ?",
+    "delTip": "It can not recover after deletion",
+    "editUser": "Edit User"
   }
 }

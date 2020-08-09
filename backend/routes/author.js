@@ -118,5 +118,21 @@ router.put('/modify', function(req, res, next) {
   });
 });
 
+router.delete('/users/delete', function(req, res, next) {
+  var delUsers = JSON.parse(req.query.ids);
+  fs.readFile(__dirname + "/../public/users.json", 'utf8', function (err, data) {
+    data = JSON.parse( data );
+    data.users = data.users.filter(function(item) {
+      return !delUsers.includes(item.id);
+    });
+    fs.writeFile(__dirname + "/../public/users.json", JSON.stringify(data), function(err) {
+      if (err) {
+        return res.status(500);
+      }
+      res.json({result: 'ok'});
+    });
+  });
+});
+
 module.exports = router;
 

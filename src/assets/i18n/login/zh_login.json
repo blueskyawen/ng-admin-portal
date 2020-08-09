@@ -38,6 +38,11 @@
     "lastLogin": "最后登录时间",
     "clusters": "管理集群",
     "manager": "管理者",
-    "operator": "运维者"
+    "operator": "运维者",
+    "addCluster": "添加集群",
+    "mutildelTitle": "确认删除选择的用户吗?",
+    "delTitle": "确认删除用户: {{name}} 吗?",
+    "delTip": "用户删除以后不能恢复",
+    "editUser": "编辑用户"
   }
 }

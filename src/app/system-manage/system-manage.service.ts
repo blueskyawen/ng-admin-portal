@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 import {catchError, toArray, map, mergeMap} from 'rxjs/operators';
+import { StorageService } from '../core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SystemManageService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private storageService: StorageService) { }
 
   getUserData(id: string) {
     return this.http.get(`/api/author/users/${id}`);
@@ -26,6 +27,10 @@ export class SystemManageService {
     return this.http.get('/api/cluster/list');
   }
 
+    deleteClusters(data: any) {
+        return this.http.delete(`/api/author/users/delete?ids=${JSON.stringify(data)}`);
+    }
+
   getUsers() {
     return forkJoin(this.getUserList(), this.getClusterList()).pipe(
         map((data: any) => {
@@ -40,6 +45,27 @@ export class SystemManageService {
               return x;
             });
           }
+        }));
+  }
+
+  getUsersAndCluster() {
+    return forkJoin(this.getUserList(), this.getClusterList()).pipe(
+        map((data: any) => {
+          let curUser = data[0].users.find(x => x.id === this.storageService.getLocalStorage('loginUserId'));
+          let manageClusters = [];
+          if (curUser) {
+            manageClusters = data[1].clusters.filter(x => curUser.clusters.includes(x.id)).map(x => {
+              return {
+                id: x.id,
+                name: x.name
+              };
+            });
+          }
+          return {
+            userNames: data[0].users.map(x => x.name),
+            clusters: manageClusters
+
+          };
         }));
   }
 }

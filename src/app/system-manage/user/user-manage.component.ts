@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SystemManageService } from '../system-manage.service';
 import {StorageService} from '../../core';
 import {TranslateService} from '@ngx-translate/core';
-import { NzNotificationService } from 'ng-zorro-antd';
+import { NzNotificationService, NzModalService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'user-manage',
@@ -19,9 +19,18 @@ export class UserManageComponent implements OnInit {
   deleteWaiting = false;
   sortData = {name: null, value: null};
   displayUsers = [];
+  operType: string = 'add';
+  editData: any;
+  drawTitle: string;
+  visible = false;
+
+  showClusterAdd = false;
+  clusterOptions: any[] = [];
+  clusters = [];
 
   constructor(private systemManageService: SystemManageService, private storageService: StorageService,
-              private translate: TranslateService, private notification: NzNotificationService) { }
+              private translate: TranslateService, private notification: NzNotificationService,
+              private modalService: NzModalService) { }
 
   ngOnInit() {
     this.getUsers();
@@ -30,7 +39,7 @@ export class UserManageComponent implements OnInit {
   getUsers() {
     this.systemManageService.getUsers().subscribe((res: any) => {
       this.users = res.map(item => {
-        item.manageClusters = item.clusterNames.length !== 0 ? item.clusterNames.join('\n') : '--';
+        item.manageClusters = item.clusterNames.length !== 0 ? item.clusterNames.join(';') : '--';
         item.checked = false;
         item.disabled = item.role === 'manager';
         item.roleName = this.translate.instant(`login.${item.role}`);
@@ -80,21 +89,85 @@ export class UserManageComponent implements OnInit {
 
   deleteUsers(): void {
     if (this.disabledUserDel) return;
-    this.deleteWaiting = true;
-    setTimeout(_ => {
-      this.displayUsers.forEach(value => value.checked = false);
-      this.refreshStatus();
-      this.deleteWaiting = false;
-      this.notification.create('success', this.translate.instant('deleteMsg'),'');
-    }, 2000);
+    let selectedUsers = this.displayUsers.filter(user => user.checked).map(x => x.id);
+    this.modalService.confirm({
+      nzTitle     : this.translate.instant('login.mutildelTitle'),
+      nzContent   : '<b style="color: red;">'+ this.translate.instant('login.delTip') +'</b>',
+      nzOkText    : this.translate.instant('confirm'),
+      nzOkType    : 'danger',
+      nzOnOk      : () => this.sureDeleteUsers(selectedUsers),
+      nzCancelText: this.translate.instant('cancel'),
+      nzOnCancel  : () => console.log('Cancel')
+    });
   }
 
   toUserAdd() {
+    this.operType = 'add';
+    this.drawTitle = this.translate.instant('login.addUser');
+    this.visible = true;
+  }
 
+  toEditUser(item: any) {
+    this.operType = 'edit';
+    this.drawTitle = this.translate.instant('login.editUser');
+    this.editData = item;
+    this.visible = true;
   }
 
   deleteUser(item: any) {
+    this.modalService.confirm({
+      nzTitle     : this.translate.instant('login.delTitle', {name: item.name}),
+      nzContent   : '<b style="color: red;">'+ this.translate.instant('login.delTip') +'</b>',
+      nzOkText    : this.translate.instant('confirm'),
+      nzOkType    : 'danger',
+      nzOnOk      : () => this.sureDeleteUsers(item.id),
+      nzCancelText: this.translate.instant('cancel'),
+      nzOnCancel  : () => console.log('Cancel')
+    });
+  }
 
+  sureDeleteUsers(items: string[] | string) {
+    let users = [];
+    if (Array.isArray(items)) {
+      users = items;
+      this.deleteWaiting = true;
+    } else {
+      users = [items];
+    }
+    this.systemManageService.deleteClusters(users).subscribe((res: any) => {
+      this.getUsers();
+      if (this.deleteWaiting) {
+        this.deleteWaiting = false;
+      }
+      this.notification.create('success', this.translate.instant('deleteMsg'),'');
+    });
+  }
+
+  toAddCluster(item: any) {
+    this.systemManageService.getClusterList().subscribe((res: any) => {
+      this.clusterOptions = res.clusters.map(x => {
+        return {id: x.id, name: x.name};
+      });
+      this.clusters = item.clusters;
+      this.showClusterAdd = true;
+    });
+  }
+
+  handleAddUser(result: any) {
+    this.visible = false;
+    if (result === 'success') {
+      this.getUsers();
+    }
+  }
+
+  addClusterOk(): void {
+    this.clusters = [];
+    this.showClusterAdd = false;
+  }
+
+  addClusterCancel(): void {
+    this.clusters = [];
+    this.showClusterAdd = false;
   }
 
 }
