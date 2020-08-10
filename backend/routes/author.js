@@ -95,6 +95,27 @@ router.get('/curUser', function(req, res, next) {
   });
 });
 
+router.put('/users/:id/editCluster', function(req, res, next) {
+  var reqData = req.body;
+  fs.readFile(__dirname + "/../public/users.json", 'utf8', function (err, data) {
+    data = JSON.parse( data );
+    var user = data.users.find(function(item) {
+      return item.id === req.params.id;
+    });
+    if (user) {
+      user.clusters = reqData.clusters;
+      fs.writeFile(__dirname + "/../public/users.json", JSON.stringify(data), function(err) {
+        if (err) {
+          return res.status(500);
+        }
+        res.json({result: 'ok'});
+      });
+    } else {
+      res.status(400);
+    }
+  });
+});
+
 router.put('/modify', function(req, res, next) {
   var reqData = req.body;
   fs.readFile(__dirname + "/../public/users.json", 'utf8', function (err, data) {
@@ -106,6 +127,7 @@ router.put('/modify', function(req, res, next) {
       user.password = reqData.password;
       user.phone = reqData.phone;
       user.email = reqData.email;
+      user.clusters = reqData.clusters;
       fs.writeFile(__dirname + "/../public/users.json", JSON.stringify(data), function(err) {
         if (err) {
           return res.status(500);

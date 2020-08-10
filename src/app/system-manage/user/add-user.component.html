@@ -8,7 +8,7 @@
           </span>
       </nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24">
-        <input nz-input id="userName" formControlName="userName">
+        <input nz-input id="userName" formControlName="userName" [disabled]="type === 'edit'">
         <nz-form-explain *ngIf="validateForm.get('userName').dirty && validateForm.get('userName').errors">
           <ng-container *ngIf="validateForm.get('userName').hasError('required')">
             {{'login.inputUser' | translate}}
@@ -22,7 +22,7 @@
         </nz-form-explain>
       </nz-form-control>
     </nz-form-item>
-    <nz-form-item>
+    <nz-form-item *ngIf="type === 'add'">
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>{{'login.password' | translate}}</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24">
         <input nz-input type="password" id="password" formControlName="password" (ngModelChange)="updateConfirmValidator()">
@@ -31,7 +31,7 @@
         </nz-form-explain>
       </nz-form-control>
     </nz-form-item>
-    <nz-form-item>
+    <nz-form-item *ngIf="type === 'add'">
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>{{'login.confirmPw' | translate}}</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24">
         <input nz-input type="password" formControlName="checkPassword" id="checkPassword">

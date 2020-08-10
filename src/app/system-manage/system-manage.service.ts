@@ -31,6 +31,10 @@ export class SystemManageService {
         return this.http.delete(`/api/author/users/delete?ids=${JSON.stringify(data)}`);
     }
 
+    editClusterToUser(id: string, data: any) {
+        return this.http.put(`/api/author/users/${id}/editCluster`, data);
+    }
+
   getUsers() {
     return forkJoin(this.getUserList(), this.getClusterList()).pipe(
         map((data: any) => {

@@ -42,21 +42,43 @@ export class AddUserComponent implements OnInit {
               private systemManageService: SystemManageService) { }
 
   ngOnInit() {
-    this.validateForm = this.fb.group({
-      userName         : [ null, [ Validators.required, this.checkNameValidator] ],
-      password         : [ null, [ Validators.required ] ],
-      checkPassword    : [ null, [ Validators.required, this.confirmationValidator ] ],
-      phoneNumberPrefix: [ '+86' ],
-      phoneNumber      : [ null, [ Validators.required, Validators.pattern(/^1\d{10}$/) ] ],
-      email            : [ null, [ Validators.email ] ],
-      clusters         : [ null ]
-    });
+    this.initForm();
     this.peraDataForUserAdd();
+  }
+
+  initForm() {
+    if (this.type === 'add') {
+      this.validateForm = this.fb.group({
+        userName         : [ null, [ Validators.required, this.checkNameValidator] ],
+        password         : [ null, [ Validators.required ] ],
+        checkPassword    : [ null, [ Validators.required, this.confirmationValidator ] ],
+        phoneNumberPrefix: [ '+86' ],
+        phoneNumber      : [ null, [ Validators.required, Validators.pattern(/^1\d{10}$/) ] ],
+        email            : [ null, [ Validators.email ] ],
+        clusters         : [ null ]
+      });
+      this.addBtnTitle = this.translate.instant('add');
+    }
+    if (this.type === 'edit') {
+      this.validateForm = this.fb.group({
+        userName         : [ this.userData.name, [ Validators.required, this.checkNameValidator] ],
+        phoneNumberPrefix: [ '+86' ],
+        phoneNumber      : [ this.userData.phone, [ Validators.required, Validators.pattern(/^1\d{10}$/) ] ],
+        email            : [ this.userData.email, [ Validators.email ] ],
+        clusters         : [ this.userData.clusters ]
+      });
+      this.addBtnTitle = this.translate.instant('save');
+    }
   }
 
   peraDataForUserAdd() {
     this.systemManageService.getUsersAndCluster().subscribe((res: any) => {
-      this.userNames = res.userNames;
+      if (this.type === 'add') {
+        this.userNames = res.userNames;
+      } else {
+        this.userNames = res.userNames.filter(x => x !== this.userData.name);
+        this.clusters = this.userData.clusters;
+      }
       this.clusterOptions = res.clusters;
     });
   }
@@ -68,7 +90,11 @@ export class AddUserComponent implements OnInit {
     }
 
     if (this.isValidAdd()) {
-      this.sendToUserAdd();
+      if (this.type === 'add') {
+        this.sendToUserAdd();
+      } else {
+        this.sendToUserEdit();
+      }
     }
   }
 
@@ -115,6 +141,27 @@ export class AddUserComponent implements OnInit {
     }, error => {
       this.addLoading = false;
       this.addBtnTitle = this.translate.instant('add');
+    });
+  }
+
+  sendToUserEdit() {
+    let reqData = {
+      "name": this.validateForm.get('userName').value,
+      "password": this.userData.password,
+      "phone": this.validateForm.get('phoneNumber').value,
+      "email": this.validateForm.get('email').value,
+      "clusters": this.clusters,
+    };
+    this.addLoading = true;
+    this.addBtnTitle = this.translate.instant('saving');
+    this.systemManageService.editUserData(this.reqData).subscribe((res: any) => {
+      this.notification.create('success', this.translate.instant('successMsg'),'');
+      setTimeout(() => {
+        this.addUserChange.emit('success');
+      }, 3000);
+    }, error => {
+      this.addLoading = false;
+      this.addBtnTitle = this.translate.instant('save');
     });
   }
 

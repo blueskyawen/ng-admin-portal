@@ -3,6 +3,13 @@ import { SystemManageService } from '../system-manage.service';
 import {StorageService} from '../../core';
 import {TranslateService} from '@ngx-translate/core';
 import { NzNotificationService, NzModalService } from 'ng-zorro-antd';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+  ValidatorFn
+} from '@angular/forms';
 
 @Component({
   selector: 'user-manage',
@@ -25,12 +32,14 @@ export class UserManageComponent implements OnInit {
   visible = false;
 
   showClusterAdd = false;
+  operUser: any;
   clusterOptions: any[] = [];
   clusters = [];
+  addClusterForm: FormGroup;
 
   constructor(private systemManageService: SystemManageService, private storageService: StorageService,
               private translate: TranslateService, private notification: NzNotificationService,
-              private modalService: NzModalService) { }
+              private modalService: NzModalService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.getUsers();
@@ -144,11 +153,15 @@ export class UserManageComponent implements OnInit {
   }
 
   toAddCluster(item: any) {
+    this.operUser = item;
     this.systemManageService.getClusterList().subscribe((res: any) => {
       this.clusterOptions = res.clusters.map(x => {
         return {id: x.id, name: x.name};
       });
       this.clusters = item.clusters;
+      this.addClusterForm = this.fb.group({
+        clusters: [ item.clusters ]
+      });
       this.showClusterAdd = true;
     });
   }
@@ -161,8 +174,14 @@ export class UserManageComponent implements OnInit {
   }
 
   addClusterOk(): void {
-    this.clusters = [];
-    this.showClusterAdd = false;
+    let reqData = {
+      clusters: this.clusters
+    };
+    this.systemManageService.editClusterToUser(this.operUser.id, reqData).subscribe((res: any) => {
+      this.notification.create('success', this.translate.instant('successMsg'),'');
+      this.getUsers();
+      this.showClusterAdd = false;
+    });
   }
 
   addClusterCancel(): void {

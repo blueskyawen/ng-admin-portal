@@ -37,10 +37,10 @@
         <td>{{user.createTime}}</td>
         <td>{{user.lastLogin}}</td>
         <td>
-          <button nz-button nzType="default" nzSize="small" style="margin-right: 5px" (click)="toEditUser(user)">
+          <button [disabled]="user.disabled" nz-button nzType="default" nzSize="small" style="margin-right: 5px" (click)="toEditUser(user)">
             {{'edit' | translate}}
           </button>
-          <nz-dropdown>
+          <nz-dropdown [nzDisabled]="user.disabled" >
             <button nz-button nz-dropdown nzSize="small"><i nz-icon type="ellipsis"></i></button>
             <ul nz-menu>
               <li nz-menu-item>
@@ -67,7 +67,7 @@
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24">{{'login.clusters' | translate}}</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24">
-        <nz-select [nzMaxMultipleCount]="10" style="width: 100%" nzMode="multiple"
+        <nz-select [nzMaxMultipleCount]="10" style="width: 100%" nzMode="multiple" name="addClusters"
                    nzPlaceHolder="{{'select' | translate}}" [(ngModel)]="clusters">
           <nz-option *ngFor="let option of clusterOptions" [nzLabel]="option.name" [nzValue]="option.id"></nz-option>
         </nz-select>
