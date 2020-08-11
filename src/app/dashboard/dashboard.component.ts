@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/main/cluster']);
   }
 
-  handleAddCluster(result) {
+  handleAddCluster(result: any) {
     this.visible = false;
     if (result === 'success') {
       this.getClusterList();

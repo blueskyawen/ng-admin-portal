@@ -5,6 +5,7 @@ var logger = require('morgan');
 
 var authRouter = require('./routes/author');
 var clusterRouter = require('./routes/cluster');
+var alarmRouter = require('./routes/alarm');
 
 var app = express();
 app.set('view engine', 'jade');
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/author', authRouter);
 app.use('/cluster', clusterRouter);
+app.use('/alarm', alarmRouter);
 
 // error handler
 app.use(function(err, req, res, next) {

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ClusterOverviewComponent } from './overview/cluster-overview.component';
 import { StoragePoolComponent } from './serve/storage-pool/storage-pool.component';
+import { ClusterAlarmComponent } from './alarm/cluster-alarm.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'overview', pathMatch: 'full' },
@@ -36,6 +37,17 @@ const routes: Routes = [
   {
     path: 'moniter',
     children: [
+      {
+        path: '**', component: StoragePoolComponent
+      }
+    ]
+  },
+  {
+    path: 'alarm',
+    children: [
+      {
+        path: 'currentAlarm', component: ClusterAlarmComponent
+      },
       {
         path: '**', component: StoragePoolComponent
       }

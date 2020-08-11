@@ -24,4 +24,8 @@ export class ClusterManageService {
   deleteCluster(id: string) {
     return this.http.delete(`/api/cluster/list/${id}`);
   }
+
+  getCurAlarms(grade: string) {
+    return this.http.get(`/api/alarm/list?type=${grade}`);
+  }
 }

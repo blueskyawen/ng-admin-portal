@@ -7,6 +7,7 @@ import { ClusterManageRoutingModule } from './cluster-manage-routing.module';
 import { ClusterOverviewComponent } from './overview/cluster-overview.component';
 import { AddClusterComponent } from './add/add-cluster.component';
 import { ClusterDashboardComponent } from './dashboard/cluster-dashboard.component';
+import { ClusterAlarmComponent } from './alarm/cluster-alarm.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { ClusterDashboardComponent } from './dashboard/cluster-dashboard.compone
     ClusterManageRoutingModule,
     ServeModule
   ],
-  declarations: [ClusterOverviewComponent, AddClusterComponent, ClusterDashboardComponent],
+  declarations: [ClusterOverviewComponent, AddClusterComponent, ClusterDashboardComponent, ClusterAlarmComponent],
   exports: [AddClusterComponent, ClusterDashboardComponent]
 })
 export class ClusterManageModule { }

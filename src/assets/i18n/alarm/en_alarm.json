@@ -1,0 +1,12 @@
+{
+  "alarm": {
+    "grade": "Grade",
+    "code": "Code",
+    "detail": "Detail",
+    "time": "Occurrence Time",
+    "critical": "Critical",
+    "serious": "Serious",
+    "warning": "Warning",
+    "prompt": "Prompt"
+  }
+}

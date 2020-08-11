@@ -1,0 +1,26 @@
+<div class="cluster-alarms">
+  <h2>{{'menu.clusterManage.currentAlarm' | translate}}</h2>
+  <div class="alarm-table">
+    <nz-table #alarmsTable [nzData]="displayAlarms" nzBordered
+              (nzCurrentPageDataChange)="currentPageDataChange($event)"
+              (nzPageIndexChange)="refreshStatus()"
+              (nzPageSizeChange)="refreshStatus()">
+      <thead (nzSortChange)="sort($event)" nzSingleSort>
+      <tr>
+        <th nzWidth="140px" nzShowSort nzSortKey="grade">{{'alarm.grade' | translate}}</th>
+        <th nzWidth="140px" nzShowSort nzSortKey="code">{{'alarm.code' | translate}}</th>
+        <th nzShowSort>{{'alarm.detail' | translate}}</th>
+        <th nzShowSort nzSortKey="time">{{'alarm.time' | translate}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of alarmsTable.data">
+        <td><nz-tag [nzColor]="gradeColor[item.grade]">{{item.grade_s}}</nz-tag></td>
+        <td>{{item.code}}</td>
+        <td>{{item.detail}}</td>
+        <td>{{item.time}}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>
