@@ -1,15 +1,17 @@
-import { Component, OnInit, Input, OnDestroy, AfterViewInit, ViewChild, SimpleChanges, ChangeDetectorRef, NgZone } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, AfterViewInit, ViewChild, OnChanges,
+  SimpleChanges, ChangeDetectorRef, NgZone } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { StorageService } from '../../core';
 import {Router} from '@angular/router';
 import { fromEvent } from 'rxjs';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'cluster-dashboard',
   templateUrl: './cluster-dashboard.component.html',
   styleUrls: ['./cluster-dashboard.component.less']
 })
-export class ClusterDashboardComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ClusterDashboardComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
   @Input() clusterData: any;
   serverUrls = {
     mon: '/main/cluster/system/server',
@@ -40,7 +42,7 @@ export class ClusterDashboardComponent implements OnInit, OnDestroy, AfterViewIn
       trigger: 'axis'
     },
     legend: {
-      data:[
+      data: [
         {
           name: this.translate.instant('dashboard.totalIops'),
           icon: 'circle'
@@ -111,10 +113,19 @@ export class ClusterDashboardComponent implements OnInit, OnDestroy, AfterViewIn
       trigger: 'axis'
     },
     legend: {
-      data:[
-        {name: this.translate.instant('dashboard.wrSpeed'),icon: 'circle'},
-        {name: this.translate.instant('dashboard.readSpeed'),icon: 'circle'},
-        {name: this.translate.instant('dashboard.writeSpeed'),icon: 'circle'}
+      data: [
+        {
+          name: this.translate.instant('dashboard.wrSpeed'),
+          icon: 'circle'
+        },
+        {
+          name: this.translate.instant('dashboard.readSpeed'),
+          icon: 'circle'
+        },
+        {
+          name: this.translate.instant('dashboard.writeSpeed'),
+          icon: 'circle'
+        }
       ],
       show: false
     },
@@ -219,13 +230,15 @@ export class ClusterDashboardComponent implements OnInit, OnDestroy, AfterViewIn
   }
 
   resizeChart() {
-    if (this.resizeTimer) return;
+    if (this.resizeTimer) {
+      return;
+    }
     this.resizeTimer = setTimeout(() => {
       if (this.iopsChartInstance) {
         this.iopsChartInstance.resize();
       }
       this.resizeTimer = undefined;
-    },100);
+    }, 100);
   }
 
   onIopsChartInit(instance: any) {
@@ -237,7 +250,7 @@ export class ClusterDashboardComponent implements OnInit, OnDestroy, AfterViewIn
       this.initChartData();
       this.iopsChartInstance.setOption(this.iopsChartOption);
     }
-    //window.addEventListener('resize', this.resizeWindow);
+    // window.addEventListener('resize', this.resizeWindow);
   }
 
   alarmGradeClass() {

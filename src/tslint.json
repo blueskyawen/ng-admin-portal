@@ -7,7 +7,7 @@
             "camelCase"
         ],
         "component-selector": [
-            true,
+            false,
             "element"
         ]
     }

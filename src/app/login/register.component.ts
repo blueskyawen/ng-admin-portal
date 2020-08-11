@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
   }
 
   submitForm(): void {
-    for (const i in this.validateForm.controls) {
+    for (const i of Object.keys(this.validateForm.controls)) {
       this.validateForm.controls[ i ].markAsDirty();
       this.validateForm.controls[ i ].updateValueAndValidity();
     }
@@ -82,7 +82,7 @@ export class RegisterComponent implements OnInit {
     this.registerLoading = true;
     this.registerBtnTitle = this.translate.instant('login.registering');
     this.loginService.userRegister(this.reqData).subscribe((res: any) => {
-      this.notification.create('success', this.translate.instant('login.registerSucesss'),'');
+      this.notification.create('success', this.translate.instant('login.registerSucesss'), '');
       setTimeout(() => {
         this.cancel();
       }, 3000);
@@ -102,6 +102,7 @@ export class RegisterComponent implements OnInit {
     } else if (control.value !== this.validateForm.controls.password.value) {
       return { confirm: true, error: true };
     }
+    // tslint:disable-next-line
   };
 
   checkNameValidator = (control: FormControl): { [ s: string ]: boolean } => {
@@ -112,6 +113,7 @@ export class RegisterComponent implements OnInit {
     } else if (this.userNames.includes(control.value)) {
       return { exist: true, error: true };
     }
+    // tslint:disable-next-line
   };
 
   cancel() {

@@ -78,8 +78,9 @@ export class AddClusterComponent implements OnInit {
     } else if (this.clusterNames.includes(control.value)) {
       return { exist: true, error: true };
     }
+    // tslint:disable-next-line
   };
-  
+
   sendClusterAdd() {
     this.reqData = {
       'name': this.validateForm.get('clusterName').value,

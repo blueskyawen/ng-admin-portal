@@ -40,7 +40,7 @@ export class SystemManageService {
         map((data: any) => {
           if (data[1] && data[1].clusters && Array.isArray(data[1].clusters) && data[1].clusters.length !== 0) {
             return data[0].users.map(x => {
-              x.clusterNames =data[1].clusters.filter(item => x.clusters.includes(item.id)).map(y => y.name);
+              x.clusterNames = data[1].clusters.filter(item => x.clusters.includes(item.id)).map(y => y.name);
               return x;
             });
           } else {
@@ -55,7 +55,7 @@ export class SystemManageService {
   getUsersAndCluster() {
     return forkJoin(this.getUserList(), this.getClusterList()).pipe(
         map((data: any) => {
-          let curUser = data[0].users.find(x => x.id === this.storageService.getLocalStorage('loginUserId'));
+          const curUser = data[0].users.find(x => x.id === this.storageService.getLocalStorage('loginUserId'));
           let manageClusters = [];
           if (curUser) {
             manageClusters = data[1].clusters.filter(x => curUser.clusters.includes(x.id)).map(x => {

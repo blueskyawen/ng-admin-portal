@@ -13,7 +13,6 @@ import { NzNotificationService } from 'ng-zorro-antd';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'user-config',
   templateUrl: './user-config.component.html',
   styleUrls: ['./user-config.component.less']
 })
@@ -36,7 +35,7 @@ export class UserConfigComponent implements OnInit {
       phoneNumber      : [ null, [ Validators.required, Validators.pattern(/^1\d{10}$/) ] ],
       email            : [ null, [ Validators.email ] ]
     });
-    let userId = this.storageService.getLocalStorage('loginUserId');
+    const userId = this.storageService.getLocalStorage('loginUserId');
     this.systemManageService.getUserData(userId).subscribe((res: any) => {
       this.userData = res;
       this.initFromData();
@@ -49,7 +48,7 @@ export class UserConfigComponent implements OnInit {
   }
 
   submitForm(): void {
-    for (const i in this.validateForm.controls) {
+    for (const i of Object.keys(this.validateForm.controls)) {
       this.validateForm.controls[ i ].markAsDirty();
       this.validateForm.controls[ i ].updateValueAndValidity();
     }
@@ -60,7 +59,7 @@ export class UserConfigComponent implements OnInit {
   }
 
   putUserModify() {
-    let reqData = {
+    const reqData = {
       'name': this.userData.name,
       'password': this.validateForm.get('password').value,
       'phone': this.validateForm.get('phoneNumber').value,
@@ -70,7 +69,7 @@ export class UserConfigComponent implements OnInit {
     this.editLoading = true;
     this.editBtnTitle = this.translate.instant('saving');
     this.systemManageService.editUserData(reqData).subscribe((res: any) => {
-      this.notification.create('success', this.translate.instant('login.editSucesss'),'');
+      this.notification.create('success', this.translate.instant('login.editSucesss'), '');
       setTimeout(() => {
         this.router.navigate(['/login']);
       }, 3000);
@@ -94,6 +93,7 @@ export class UserConfigComponent implements OnInit {
     } else if (control.value !== this.validateForm.controls.password.value) {
       return { confirm: true, error: true };
     }
+    // tslint:disable-next-line
   };
 
 }

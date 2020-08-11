@@ -180,7 +180,7 @@ export class SystemManageSidebarComponent implements OnInit {
   ngOnInit() {
     this.storageService.getCurrentUrlSub().subscribe((res: any) => {
       if (res.includes('/main/system')) {
-        this.checkMenuActive(res)
+        this.checkMenuActive(res);
       }
     });
   }

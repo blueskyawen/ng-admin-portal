@@ -12,7 +12,6 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'user-manage',
   templateUrl: './user-manage.component.html',
   styleUrls: ['./user-manage.component.less']
 })
@@ -26,7 +25,7 @@ export class UserManageComponent implements OnInit {
   deleteWaiting = false;
   sortData = {name: null, value: null};
   displayUsers = [];
-  operType: string = 'add';
+  operType = 'add';
   editData: any;
   drawTitle: string;
   visible = false;
@@ -66,7 +65,9 @@ export class UserManageComponent implements OnInit {
 
   search(): void {
     if (this.sortData.name && this.sortData.value) {
-      this.displayUsers = this.users.sort((a, b) => (this.sortData.value === 'ascend') ? (a[ this.sortData.name ] > b[ this.sortData.name ] ? 1 : -1) : (b[ this.sortData.name ] > a[ this.sortData.name ] ? 1 : -1));
+      this.displayUsers = this.users.sort((a, b) => (this.sortData.value === 'ascend') ?
+          (a[ this.sortData.name ] > b[ this.sortData.name ] ? 1 : -1) :
+          (b[ this.sortData.name ] > a[ this.sortData.name ] ? 1 : -1));
     } else {
       this.displayUsers = [...this.users];
     }
@@ -97,11 +98,13 @@ export class UserManageComponent implements OnInit {
   }
 
   deleteUsers(): void {
-    if (this.disabledUserDel) return;
-    let selectedUsers = this.displayUsers.filter(user => user.checked).map(x => x.id);
+    if (this.disabledUserDel) {
+      return;
+    }
+    const selectedUsers = this.displayUsers.filter(user => user.checked).map(x => x.id);
     this.modalService.confirm({
       nzTitle     : this.translate.instant('login.mutildelTitle'),
-      nzContent   : '<b style="color: red;">'+ this.translate.instant('login.delTip') +'</b>',
+      nzContent   : '<b style="color: red;">' + this.translate.instant('login.delTip') + '</b>',
       nzOkText    : this.translate.instant('confirm'),
       nzOkType    : 'danger',
       nzOnOk      : () => this.sureDeleteUsers(selectedUsers),
@@ -126,7 +129,7 @@ export class UserManageComponent implements OnInit {
   deleteUser(item: any) {
     this.modalService.confirm({
       nzTitle     : this.translate.instant('login.delTitle', {name: item.name}),
-      nzContent   : '<b style="color: red;">'+ this.translate.instant('login.delTip') +'</b>',
+      nzContent   : '<b style="color: red;">' + this.translate.instant('login.delTip') + '</b>',
       nzOkText    : this.translate.instant('confirm'),
       nzOkType    : 'danger',
       nzOnOk      : () => this.sureDeleteUsers(item.id),
@@ -148,7 +151,7 @@ export class UserManageComponent implements OnInit {
       if (this.deleteWaiting) {
         this.deleteWaiting = false;
       }
-      this.notification.create('success', this.translate.instant('deleteMsg'),'');
+      this.notification.create('success', this.translate.instant('deleteMsg'), '');
     });
   }
 
@@ -174,11 +177,12 @@ export class UserManageComponent implements OnInit {
   }
 
   addClusterOk(): void {
-    let reqData = {
+    const reqData = {
       clusters: this.clusters
     };
+
     this.systemManageService.editClusterToUser(this.operUser.id, reqData).subscribe((res: any) => {
-      this.notification.create('success', this.translate.instant('successMsg'),'');
+      this.notification.create('success', this.translate.instant('successMsg'), '');
       this.getUsers();
       this.showClusterAdd = false;
     });

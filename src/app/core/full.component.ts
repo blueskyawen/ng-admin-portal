@@ -46,7 +46,7 @@ export class FullComponent implements OnInit {
       'align-items': 'center',
       'padding': '5px 16px',
       'color': this.lang === lang ? '#108ee9' : 'rgba(0,0,0,.65)'
-    }
+    };
   }
 
   initObserveUrl() {
@@ -58,7 +58,7 @@ export class FullComponent implements OnInit {
         this.showSidebar = this.sideBarShowMap.includes(this.curMenu);
         setTimeout(() => {
           this.storageService.emitUrl(event.url);
-        })
+        });
       });
   }
 
@@ -74,7 +74,7 @@ export class FullComponent implements OnInit {
   }
 
   loginOut() {
-    let reqData = {
+    const reqData = {
       user: this.userName,
       lastLogin: (new Date()).toString().split('(')[0]
     };
@@ -89,7 +89,7 @@ export class FullComponent implements OnInit {
   }
 
   toHelp() {
-    window.open("http://github.com/blueskyawen/ng-admin-portal")
+    window.open('http://github.com/blueskyawen/ng-admin-portal');
   }
 
 }

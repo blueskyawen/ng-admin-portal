@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
   }
 
   submitForm(): void {
-    for (const i in this.validateForm.controls) {
+    for (const i of Object.keys(this.validateForm.controls)) {
       this.validateForm.controls[ i ].markAsDirty();
       this.validateForm.controls[ i ].updateValueAndValidity();
     }
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
     this.loginBtnLabel = this.translate.instant('login.logining');
     this.loginService.userLoginin(this.loginData).subscribe((res: any) => {
       this.router.navigate(['/main/dashboard']);
-      this.notification.create('success', this.translate.instant('login.loginSucesss'),'');
+      this.notification.create('success', this.translate.instant('login.loginSucesss'), '');
     }, error => {
       this.loginLoading = false;
       this.loginBtnLabel = this.translate.instant('login.login');

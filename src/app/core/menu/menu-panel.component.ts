@@ -199,11 +199,13 @@ export class MenuPanelComponent implements OnInit {
 
   pickMenu(event: any, item: any) {
     event.stopPropagation();
-    var itemIndex = this.storageService.pickedMenus.findIndex(menu => menu.name === item.name);
+    const itemIndex = this.storageService.pickedMenus.findIndex(menu => menu.name === item.name);
     if (itemIndex !== -1) {
       this.storageService.pickedMenus.splice(itemIndex, 1);
     } else {
-      if (this.storageService.pickedMenus.length >= 5) return;
+      if (this.storageService.pickedMenus.length >= 5) {
+        return;
+      }
       this.storageService.pickedMenus.push(item);
     }
     this.storageService.setPickedMenus();
@@ -221,14 +223,14 @@ export class MenuPanelComponent implements OnInit {
 
   searchChange() {
     if (this.debounceTimer) {
-      clearTimeout(this.debounceTimer)
+      clearTimeout(this.debounceTimer);
     }
     this.debounceTimer = setTimeout(() => {
       for (let i = 0; i < this.menuList.length; i++) {
         this.menuList[i].children = this.s_menus[i].children.filter(item => item.label.includes(this.searchValue));
       }
       this.debounceTimer = undefined;
-    },1000);
+    }, 1000);
   }
 
 }

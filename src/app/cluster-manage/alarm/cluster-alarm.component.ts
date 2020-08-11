@@ -19,7 +19,7 @@ export class ClusterAlarmComponent implements OnInit {
   gradeColor = {
     'critical': 'red',
     'serious': 'magenta',
-    'warning':'orange',
+    'warning': 'orange',
     'prompt': 'purple'
   };
 

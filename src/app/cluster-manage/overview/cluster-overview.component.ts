@@ -9,7 +9,7 @@ import {StorageService} from '../../core';
   styleUrls: ['./cluster-overview.component.less']
 })
 export class ClusterOverviewComponent implements OnInit {
-  links : any[] = [
+  links: any[] = [
     {
       label: this.translate.instant('cluster'),
       routerLink: ['/main/cluster/overview']

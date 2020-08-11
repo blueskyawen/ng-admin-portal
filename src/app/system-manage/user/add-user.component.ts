@@ -21,16 +21,7 @@ export class AddUserComponent implements OnInit {
   @Input() userData: any;
   @Output() addUserChange = new EventEmitter<string>();
   validateForm: FormGroup;
-  reqData = {
-    'name': '',
-    'password': '',
-    'phone': '',
-    'email': '',
-    'agree': true,
-    'role': 'operator',
-    'clusters': [],
-    'createTime': ''
-  };
+  reqData = {};
   addLoading: boolean = false;
   addBtnTitle: string = this.translate.instant('add');
   userNames: string[] = [];
@@ -84,7 +75,7 @@ export class AddUserComponent implements OnInit {
   }
 
   submitForm(): void {
-    for (const i in this.validateForm.controls) {
+    for (const i of Object.keys(this.validateForm.controls)) {
       this.validateForm.controls[ i ].markAsDirty();
       this.validateForm.controls[ i ].updateValueAndValidity();
     }
@@ -108,6 +99,7 @@ export class AddUserComponent implements OnInit {
     } else if (control.value !== this.validateForm.controls.password.value) {
       return { confirm: true, error: true };
     }
+    // tslint:disable-next-line
   };
 
   checkNameValidator = (control: FormControl): { [ s: string ]: boolean } => {
@@ -118,6 +110,7 @@ export class AddUserComponent implements OnInit {
     } else if (this.userNames.includes(control.value)) {
       return { exist: true, error: true };
     }
+    // tslint:disable-next-line
   };
 
   sendToUserAdd() {
@@ -134,7 +127,7 @@ export class AddUserComponent implements OnInit {
     this.addLoading = true;
     this.addBtnTitle = this.translate.instant('adding');
     this.loginService.userRegister(this.reqData).subscribe((res: any) => {
-      this.notification.create('success', this.translate.instant('addMsg'),'');
+      this.notification.create('success', this.translate.instant('addMsg'), '');
       setTimeout(() => {
         this.addUserChange.emit('success');
       }, 3000);
@@ -145,7 +138,7 @@ export class AddUserComponent implements OnInit {
   }
 
   sendToUserEdit() {
-    let reqData = {
+    this.reqData = {
       'name': this.validateForm.get('userName').value,
       'password': this.userData.password,
       'phone': this.validateForm.get('phoneNumber').value,
@@ -155,7 +148,7 @@ export class AddUserComponent implements OnInit {
     this.addLoading = true;
     this.addBtnTitle = this.translate.instant('saving');
     this.systemManageService.editUserData(this.reqData).subscribe((res: any) => {
-      this.notification.create('success', this.translate.instant('successMsg'),'');
+      this.notification.create('success', this.translate.instant('successMsg'), '');
       setTimeout(() => {
         this.addUserChange.emit('success');
       }, 3000);

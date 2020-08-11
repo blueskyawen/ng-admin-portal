@@ -77,8 +77,8 @@ export class DashboardComponent implements OnInit {
   toDeleteCluster(item: any) {
     this.modalService.confirm({
       nzTitle     : this.translate.instant('dashboard.cluster.delTitle', {name: item.name}),
-      nzContent   : '<b style="color: red;">'+
-          this.translate.instant('dashboard.cluster.delTip') +'</b>',
+      nzContent   : '<b style="color: red;">' +
+          this.translate.instant('dashboard.cluster.delTip') + '</b>',
       nzOkText    : this.translate.instant('confirm'),
       nzOkType    : 'danger',
       nzOnOk      : () => this.sureDeleteCluster(item),
@@ -89,7 +89,7 @@ export class DashboardComponent implements OnInit {
 
   sureDeleteCluster(item: any) {
     this.clusterManageService.deleteCluster(item.id).subscribe((res: any) => {
-      this.notification.create('success', this.translate.instant('deleteMsg'),'');
+      this.notification.create('success', this.translate.instant('deleteMsg'), '');
       this.getClusterList();
     });
   }

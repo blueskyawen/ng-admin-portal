@@ -35,7 +35,7 @@ export class AddHeaderInterceptor implements HttpInterceptor {
         error => {
           if (error instanceof HttpErrorResponse) {
             if (error.status === 500) {
-              this.notification.create('error', this.translate.instant('innerError'),'');
+              this.notification.create('error', this.translate.instant('innerError'), '');
             } else {
               if (error.status >= 400) {
                 this.notification.create('error', this.translate.instant('error'),

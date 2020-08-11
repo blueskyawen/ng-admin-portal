@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {StorageService} from '../storage.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -259,7 +259,7 @@ export class ClusterManageSidebarComponent implements OnInit {
   ngOnInit() {
     this.storageService.getCurrentUrlSub().subscribe((res: any) => {
       if (res.includes('/main/cluster')) {
-        this.checkMenuActive(res === '/main/cluster' ? res + '/overview' : res)
+        this.checkMenuActive(res === '/main/cluster' ? res + '/overview' : res);
       }
     });
   }

@@ -8,7 +8,7 @@ import {StorageService} from '../../../core';
   styleUrls: ['./storage-pool.component.less']
 })
 export class StoragePoolComponent implements OnInit {
-  links : any[] = [
+  links: any[] = [
     {
       label: this.translate.instant('cluster'),
       routerLink: ['/main/cluster/overview']

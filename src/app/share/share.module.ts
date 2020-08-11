@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgxEchartsModule } from "ngx-echarts";
+import { NgxEchartsModule } from 'ngx-echarts';
 
 import { PageNotFoundComponent } from '../share/page-not-found.component';
 
