@@ -19,13 +19,13 @@ export class AddClusterComponent implements OnInit {
   @Output() addClusterChange = new EventEmitter<string>();
   validateForm: FormGroup;
   reqData = {
-    "name": "",
-    "publicNet": "",
-    "network": "",
-    "version": "",
-    "description": ""
+    'name': '',
+    'publicNet': '',
+    'network': '',
+    'version': '',
+    'description': ''
   };
-  addLoading: boolean = false;
+  addLoading = false;
   addBtnTitle: string = this.translate.instant('add');
   versionOptions = [
     {label: 'V1.x', value: 'v1'},
@@ -56,7 +56,7 @@ export class AddClusterComponent implements OnInit {
   }
 
   submitForm(): void {
-    for (const i in this.validateForm.controls) {
+    for (const i of Object.keys(this.validateForm.controls)) {
       this.validateForm.controls[ i ].markAsDirty();
       this.validateForm.controls[ i ].updateValueAndValidity();
     }
@@ -79,19 +79,19 @@ export class AddClusterComponent implements OnInit {
       return { exist: true, error: true };
     }
   };
-
+  
   sendClusterAdd() {
     this.reqData = {
-      "name": this.validateForm.get('clusterName').value,
-      "publicNet": this.validateForm.get('publicNet').value,
-      "network": this.validateForm.get('network').value,
-      "version": this.validateForm.get('version').value,
-      "description": this.validateForm.get('description').value
+      'name': this.validateForm.get('clusterName').value,
+      'publicNet': this.validateForm.get('publicNet').value,
+      'network': this.validateForm.get('network').value,
+      'version': this.validateForm.get('version').value,
+      'description': this.validateForm.get('description').value
     };
     this.addLoading = true;
     this.addBtnTitle = this.translate.instant('adding');
     this.clusterManageService.postAddCluster(this.reqData).subscribe((res: any) => {
-      this.notification.create('success', this.translate.instant('dashboard.cluster.addSuccess'),'');
+      this.notification.create('success', this.translate.instant('dashboard.cluster.addSuccess'), '');
       this.addClusterChange.emit('success');
     }, error => {
       this.addLoading = false;

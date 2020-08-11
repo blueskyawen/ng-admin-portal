@@ -18,14 +18,14 @@ import { NzNotificationService } from 'ng-zorro-antd';
 export class RegisterComponent implements OnInit {
   validateForm: FormGroup;
   reqData = {
-    "name": "",
-    "password": "",
-    "phone": "",
-    "email": "",
-    "agree": true,
-    "role": "operator",
-    "clusters": [],
-    "createTime": ""
+    'name': '',
+    'password': '',
+    'phone': '',
+    'email': '',
+    'agree': true,
+    'role': 'operator',
+    'clusters': [],
+    'createTime': ''
   };
   registerLoading: boolean = false;
   registerBtnTitle: string = this.translate.instant('login.register');
@@ -70,14 +70,14 @@ export class RegisterComponent implements OnInit {
 
   putUserRegister() {
     this.reqData = {
-      "name": this.validateForm.get('userName').value,
-      "password": this.validateForm.get('password').value,
-      "phone": this.validateForm.get('phoneNumber').value,
-      "email": this.validateForm.get('email').value,
-      "agree": this.validateForm.get('agree').value,
-      "role": "operator",
-      "clusters": [],
-      "createTime": (new Date()).toString().split('(')[0]
+      'name': this.validateForm.get('userName').value,
+      'password': this.validateForm.get('password').value,
+      'phone': this.validateForm.get('phoneNumber').value,
+      'email': this.validateForm.get('email').value,
+      'agree': this.validateForm.get('agree').value,
+      'role': 'operator',
+      'clusters': [],
+      'createTime': (new Date()).toString().split('(')[0]
     };
     this.registerLoading = true;
     this.registerBtnTitle = this.translate.instant('login.registering');

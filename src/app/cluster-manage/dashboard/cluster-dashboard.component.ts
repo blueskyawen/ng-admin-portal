@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy, AfterViewInit, ViewChild, SimpleChanges, ChangeDetectorRef, NgZone } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { StorageService } from '../../core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 import { fromEvent } from 'rxjs';
 
 @Component({
@@ -41,9 +41,18 @@ export class ClusterDashboardComponent implements OnInit, OnDestroy, AfterViewIn
     },
     legend: {
       data:[
-        {name: this.translate.instant('dashboard.totalIops'),icon: 'circle'},
-        {name: this.translate.instant('dashboard.readIops'),icon: 'circle'},
-        {name: this.translate.instant('dashboard.writeIops'),icon: 'circle'}
+        {
+          name: this.translate.instant('dashboard.totalIops'),
+          icon: 'circle'
+        },
+        {
+          name: this.translate.instant('dashboard.readIops'),
+          icon: 'circle'
+        },
+        {
+          name: this.translate.instant('dashboard.writeIops'),
+          icon: 'circle'
+        }
       ],
       show: false
     },

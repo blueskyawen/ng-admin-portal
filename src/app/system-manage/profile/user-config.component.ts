@@ -61,11 +61,11 @@ export class UserConfigComponent implements OnInit {
 
   putUserModify() {
     let reqData = {
-      "name": this.userData.name,
-      "password": this.validateForm.get('password').value,
-      "phone": this.validateForm.get('phoneNumber').value,
-      "email": this.validateForm.get('email').value,
-      "clusters": this.userData.clusters
+      'name': this.userData.name,
+      'password': this.validateForm.get('password').value,
+      'phone': this.validateForm.get('phoneNumber').value,
+      'email': this.validateForm.get('email').value,
+      'clusters': this.userData.clusters
     };
     this.editLoading = true;
     this.editBtnTitle = this.translate.instant('saving');

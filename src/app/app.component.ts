@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import {StorageService} from './core';
 import { en_US, zh_CN, NzI18nService } from 'ng-zorro-antd'
+
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'app-root',

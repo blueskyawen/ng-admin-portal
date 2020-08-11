@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ClusterManageService} from "../cluster-manage.service";
-import {TranslateService} from "@ngx-translate/core";
-import {NzModalService, NzNotificationService} from "ng-zorro-antd";
+import {ClusterManageService} from '../cluster-manage.service';
+import {TranslateService} from '@ngx-translate/core';
+import {NzModalService, NzNotificationService} from 'ng-zorro-antd';
 
 @Component({
-  selector: 'cluster-alarm',
   templateUrl: './cluster-alarm.component.html',
   styleUrls: ['./cluster-alarm.component.less']
 })
@@ -18,10 +17,10 @@ export class ClusterAlarmComponent implements OnInit {
   sortData = {name: null, value: null};
   displayAlarms = [];
   gradeColor = {
-    "critical": 'red',
-    "serious": 'magenta',
-    "warning":'orange',
-    "prompt": 'purple'
+    'critical': 'red',
+    'serious': 'magenta',
+    'warning':'orange',
+    'prompt': 'purple'
   };
 
   constructor(private clusterManageService: ClusterManageService,
@@ -50,7 +49,9 @@ export class ClusterAlarmComponent implements OnInit {
 
   search(): void {
     if (this.sortData.name && this.sortData.value) {
-      this.displayAlarms = this.alarmList.sort((a, b) => (this.sortData.value === 'ascend') ? (a[ this.sortData.name ] > b[ this.sortData.name ] ? 1 : -1) : (b[ this.sortData.name ] > a[ this.sortData.name ] ? 1 : -1));
+      this.displayAlarms = this.alarmList.sort((a, b) => (this.sortData.value === 'ascend') ?
+          (a[ this.sortData.name ] > b[ this.sortData.name ] ? 1 : -1) :
+          (b[ this.sortData.name ] > a[ this.sortData.name ] ? 1 : -1));
     } else {
       this.displayAlarms = [...this.alarmList];
     }

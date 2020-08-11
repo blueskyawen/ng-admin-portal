@@ -22,14 +22,14 @@ export class AddUserComponent implements OnInit {
   @Output() addUserChange = new EventEmitter<string>();
   validateForm: FormGroup;
   reqData = {
-    "name": "",
-    "password": "",
-    "phone": "",
-    "email": "",
-    "agree": true,
-    "role": "operator",
-    "clusters": [],
-    "createTime": ""
+    'name': '',
+    'password': '',
+    'phone': '',
+    'email': '',
+    'agree': true,
+    'role': 'operator',
+    'clusters': [],
+    'createTime': ''
   };
   addLoading: boolean = false;
   addBtnTitle: string = this.translate.instant('add');
@@ -122,14 +122,14 @@ export class AddUserComponent implements OnInit {
 
   sendToUserAdd() {
     this.reqData = {
-      "name": this.validateForm.get('userName').value,
-      "password": this.validateForm.get('password').value,
-      "phone": this.validateForm.get('phoneNumber').value,
-      "email": this.validateForm.get('email').value,
-      "agree": true,
-      "role": "operator",
-      "clusters": this.clusters,
-      "createTime": (new Date()).toString().split('(')[0]
+      'name': this.validateForm.get('userName').value,
+      'password': this.validateForm.get('password').value,
+      'phone': this.validateForm.get('phoneNumber').value,
+      'email': this.validateForm.get('email').value,
+      'agree': true,
+      'role': 'operator',
+      'clusters': this.clusters,
+      'createTime': (new Date()).toString().split('(')[0]
     };
     this.addLoading = true;
     this.addBtnTitle = this.translate.instant('adding');
@@ -146,11 +146,11 @@ export class AddUserComponent implements OnInit {
 
   sendToUserEdit() {
     let reqData = {
-      "name": this.validateForm.get('userName').value,
-      "password": this.userData.password,
-      "phone": this.validateForm.get('phoneNumber').value,
-      "email": this.validateForm.get('email').value,
-      "clusters": this.clusters,
+      'name': this.validateForm.get('userName').value,
+      'password': this.userData.password,
+      'phone': this.validateForm.get('phoneNumber').value,
+      'email': this.validateForm.get('email').value,
+      'clusters': this.clusters,
     };
     this.addLoading = true;
     this.addBtnTitle = this.translate.instant('saving');

@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular
 import { HttpClient } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { StorageService } from '../core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd';
 import { ClusterManageService } from '../cluster-manage/cluster-manage.service';
 import { NzNotificationService } from 'ng-zorro-antd';
@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/main/cluster']);
   }
 
-  handleAddCluster(result: any) {
+  handleAddCluster(result) {
     this.visible = false;
     if (result === 'success') {
       this.getClusterList();
