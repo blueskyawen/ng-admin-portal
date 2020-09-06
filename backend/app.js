@@ -10,7 +10,7 @@ var alarmRouter = require('./routes/alarm');
 var app = express();
 app.set('view engine', 'jade');
 
-/*app.all('*', (req, res, next) => {
+app.all('*', (req, res, next) => {
   res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'X-Requested-With,content-type,language-option');
@@ -22,7 +22,7 @@ app.set('view engine', 'jade');
   } else {
     next();
   }
-});*/
+});
 
 app.use(logger('dev'));
 app.use(express.json());
