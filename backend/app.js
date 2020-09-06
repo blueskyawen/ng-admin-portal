@@ -30,9 +30,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/author', authRouter);
-app.use('/cluster', clusterRouter);
-app.use('/alarm', alarmRouter);
+app.use('/api/author', authRouter);
+app.use('/api/cluster', clusterRouter);
+app.use('/api/alarm', alarmRouter);
 
 // error handler
 app.use(function(err, req, res, next) {
