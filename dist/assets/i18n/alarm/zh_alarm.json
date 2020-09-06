@@ -1,0 +1,12 @@
+{
+  "alarm": {
+    "grade": "告警级别",
+    "code": "告警码",
+    "detail": "详情",
+    "time": "产生时间",
+    "critical": "紧急",
+    "serious": "重要",
+    "warning": "次要",
+    "prompt": "一般"
+  }
+}

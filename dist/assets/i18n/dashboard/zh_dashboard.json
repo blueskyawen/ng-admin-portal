@@ -1,0 +1,40 @@
+{
+  "dashboard": {
+    "clusters": "集群列表",
+    "overview": "集群概览",
+    "health": "健康",
+    "addCluster": "新增集群",
+    "totalIops": "总Iops",
+    "readIops": "读Iops",
+    "writeIops": "写Iops",
+    "unitIops": "个/秒",
+    "wrSpeed": "读写速率",
+    "readSpeed": "读速率",
+    "writeSpeed": "写速率",
+    "uniterSpeed": "字节/秒",
+    "clusterCapacity": "集群容量",
+    "physicCapacity": "物理裸容量",
+    "availableCapacity": "有效容量",
+    "free": "剩余",
+    "used": "已用",
+    "alarm": {
+      "critical": "紧急告警",
+      "serious": "重要告警",
+      "warning": "次要告警",
+      "prompt": "一般告警"
+    },
+    "goClusterManage": "进入集群管理",
+    "cluster": {
+      "add": "新增集群",
+      "publicNet": "公共网卡",
+      "network": "集群网络",
+      "inputTip": "请输入正确的值",
+      "selectVersion": "请选择版本号",
+      "addSuccess": "新增集群成功",
+      "nameExist": "集群名已存在",
+      "delete": "删除集群",
+      "delTitle": "确认删除集群: {{name}} 吗?",
+      "delTip": "集群删除以后不能恢复"
+    }
+  }
+}
