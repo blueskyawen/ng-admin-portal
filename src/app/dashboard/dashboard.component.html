@@ -13,7 +13,7 @@
                 (click)="toClusterManage()"></span>
         </div>
         <span class="px-delete" nz-icon type="delete" title="{{'dashboard.cluster.delete' | translate}}"
-              (click)="toDeleteCluster(cluster)"></span>
+              (click)="toDeleteCluster($event,cluster)"></span>
       </div>
       <div class="cluster add-cluster" (click)="visible=true">
         <span class="font-paletx" nz-icon type="plus"></span>

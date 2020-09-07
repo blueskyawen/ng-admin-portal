@@ -74,7 +74,8 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  toDeleteCluster(item: any) {
+  toDeleteCluster($event: any, item: any) {
+    $event.stopPropagation();
     this.modalService.confirm({
       nzTitle     : this.translate.instant('dashboard.cluster.delTitle', {name: item.name}),
       nzContent   : '<b style="color: red;">' +
@@ -93,5 +94,4 @@ export class DashboardComponent implements OnInit {
       this.getClusterList();
     });
   }
-
 }
