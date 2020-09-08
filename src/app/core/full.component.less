@@ -366,22 +366,79 @@
   .main-app  {
     header {
       .app-icon {
+        width: 25%;
         .menu-icon {
           display: none;
         }
       }
       .app-menu {
-        width: 100%;
+        width: 75%;
         .menu-items-sm {
           display: none;
         }
+      }
+    }
+    .main-content {
+      .sideBar {
+        width: 25%;
+      }
+      .content {
+        width: 75%;
       }
     }
   }
 }
 /* 中型设备（台式电脑，992px 起） */
 @media (min-width: 992px) {
+  .main-app  {
+    header {
+      .app-icon {
+        width: 20%;
+        .menu-icon {
+          display: none;
+        }
+      }
+      .app-menu {
+        width: 80%;
+        .menu-items-sm {
+          display: none;
+        }
+      }
+    }
+    .main-content {
+      .sideBar {
+        width: 20%;
+      }
+      .content {
+        width: 80%;
+      }
+    }
+  }
 }
 /* 大型设备（大台式电脑，1200px 起） */
 @media (min-width: 1200px) {
+  .main-app  {
+    header {
+      .app-icon {
+        width: 13%;
+        .menu-icon {
+          display: none;
+        }
+      }
+      .app-menu {
+        width: 87%;
+        .menu-items-sm {
+          display: none;
+        }
+      }
+    }
+    .main-content {
+      .sideBar {
+        width: 13%;
+      }
+      .content {
+        width: 87%;
+      }
+    }
+  }
 }
