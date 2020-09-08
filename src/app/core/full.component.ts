@@ -58,7 +58,7 @@ export class FullComponent implements OnInit {
         setTimeout(() => {
           this.storageService.emitUrl(event.url);
         });
-        let winWidth = document.documentElement.clientWidth;
+        const winWidth = document.documentElement.clientWidth;
         if (winWidth > 767) {
           this.showSidebar = this.sideBarShowMap.includes(this.curMenu);
         }
@@ -87,7 +87,9 @@ export class FullComponent implements OnInit {
   }
 
   toggleSidebar() {
-    if (this.curMenu === 'dashboard') return;
+    if (this.curMenu === 'dashboard') {
+      return;
+    }
     this.showSidebar = !this.showSidebar;
     this.storageService.emitSideBarShow(this.showSidebar ? 'show' : 'hide');
   }
