@@ -42,6 +42,7 @@
           padding: 18px 15px 15px 15px;
           box-sizing: border-box;
           margin-right: 10px;
+          margin-bottom: 5px;
           cursor: pointer;
           position: relative;
           .cluster-name {
@@ -124,10 +125,32 @@
 }
 /* 小型设备（平板电脑，768px 起） */
 @media (min-width: 768px) {
+  .dashboard {
+    > div {
+      &.cluster-detail {
+        .content {
+          height: auto;
+          min-height: 700px;
+        }
+      }
+    }
+  }
 }
 /* 中型设备（台式电脑，992px 起） */
 @media (min-width: 992px) {
+
 }
 /* 大型设备（大台式电脑，1200px 起） */
 @media (min-width: 1200px) {
+  .dashboard {
+    > div {
+      &.cluster-detail {
+        .content {
+          width: 100%;
+          height: 700px;
+          padding: 0;
+        }
+      }
+    }
+  }
 }
