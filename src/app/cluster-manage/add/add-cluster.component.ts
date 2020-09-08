@@ -94,6 +94,10 @@ export class AddClusterComponent implements OnInit {
     this.clusterManageService.postAddCluster(this.reqData).subscribe((res: any) => {
       this.notification.create('success', this.translate.instant('dashboard.cluster.addSuccess'), '');
       this.addClusterChange.emit('success');
+      setTimeout(() => {
+        this.addLoading = false;
+        this.addBtnTitle = this.translate.instant('add');
+      }, 3000);
     }, error => {
       this.addLoading = false;
       this.addBtnTitle = this.translate.instant('add');

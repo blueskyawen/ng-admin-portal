@@ -164,3 +164,69 @@
   box-sizing: border-box;
   height: 100%;
 }
+
+@media (max-width: 767px) {
+  .cluster-dashboard {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    padding: 20px;
+    > div {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: column;
+      height: 700px;
+      .view-item {
+        padding: 5px;
+        box-sizing: border-box;
+      }
+      &:nth-child(1) {
+        width: 100%;
+        .view-item {
+          width: 100%;
+          height: 50%;
+        }
+      }
+      &:nth-child(2) {
+        width: 100%;
+        margin: 0;
+      }
+      &:nth-child(3) {
+        width: 100%;
+        .view-item {
+          width: 50%;
+          height: 33.333%;
+          padding: 5px;
+          .serve-content {
+            width: 100%;
+            .serve-total {
+              padding: 30px 40px;
+              > span {
+                font-size: 32px;
+                &:first-child {
+                  margin-right: 20px;
+                }
+                &:last-child {
+                  font-weight: bold;
+                }
+              }
+            }
+            .serve-active {
+              padding: 10px 0 10px 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/* 小型设备（平板电脑，768px 起） */
+@media (min-width: 768px) {
+
+}
+/* 中型设备（台式电脑，992px 起） */
+@media (min-width: 992px) {
+}
+/* 大型设备（大台式电脑，1200px 起） */
+@media (min-width: 1200px) {
+}

@@ -2,7 +2,7 @@
   <header>
     <div class="app-icon">
       <div class="app-title">Admin Portal</div>
-      <div class="menu-icon" (click)="showSidebar = !showSidebar">
+      <div class="menu-icon" (click)="toggleSidebar()">
         <span nz-icon type="appstore" theme="outline" class="px-service"></span>
       </div>
     </div>
@@ -133,6 +133,7 @@
       <cluster-manage-sidebar *ngIf="curMenu === 'clusterManage'"></cluster-manage-sidebar>
       <system-manage-sidebar *ngIf="curMenu === 'sysManage'"></system-manage-sidebar>
     </div>
+    <div class="sidebar-shadow" *ngIf="showSidebar" (click)="toggleSidebar()"></div>
     <div class="content">
       <li *ngIf="curMenu !== 'dashboard'" nz-icon [type]="showSidebar ? 'left-circle' : 'right-circle'"
           theme="fill" class="side-switch"
