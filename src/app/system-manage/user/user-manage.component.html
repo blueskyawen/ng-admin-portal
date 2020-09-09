@@ -9,34 +9,34 @@
         {{'delete' | translate}}
       </button>
     </div>
-    <nz-table #usersTable [nzData]="displayUsers" nzBordered
+    <nz-table #usersTable [nzData]="displayUsers" nzBordered [nzScroll]="{x: '1200px'}"
               (nzCurrentPageDataChange)="currentPageDataChange($event)"
               (nzPageIndexChange)="refreshStatus()"
               (nzPageSizeChange)="refreshStatus()">
       <thead (nzSortChange)="sort($event)" nzSingleSort>
       <tr>
-        <th nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
-        <th nzWidth="100px" nzShowSort nzSortKey="name">{{'login.user' | translate}}</th>
+        <th nzWidth="50px" nzLeft="0px" nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
+        <th nzWidth="100px" nzLeft="50px" nzShowSort nzSortKey="name">{{'login.user' | translate}}</th>
         <th nzWidth="80px" nzShowSort nzSortKey="roleName">{{'login.role' | translate}}</th>
         <th nzWidth="150px" nzShowSort nzSortKey="phone">{{'login.phone' | translate}}</th>
         <th nzShowSort nzSortKey="email">{{'login.email' | translate}}</th>
         <th>{{'login.clusters' | translate}}</th>
         <th nzShowSort nzSortKey="createTime">{{'login.createTime' | translate}}</th>
         <th nzShowSort nzSortKey="lastLogin">{{'login.lastLogin' | translate}}</th>
-        <th nzWidth="120px">{{'action' | translate}}</th>
+        <th nzWidth="120px" nzRight="0px">{{'action' | translate}}</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let user of usersTable.data">
-        <td nzShowCheckbox [(nzChecked)]="user.checked" [nzDisabled]="user.disabled" (nzCheckedChange)="refreshStatus()"></td>
-        <td>{{user.name}}</td>
+        <td nzLeft="0px" nzShowCheckbox [(nzChecked)]="user.checked" [nzDisabled]="user.disabled" (nzCheckedChange)="refreshStatus()"></td>
+        <td nzLeft="50px">{{user.name}}</td>
         <td>{{user.roleName}}</td>
         <td>{{user.phone}}</td>
         <td>{{user.email || '--'}}</td>
         <td>{{user.manageClusters}}</td>
         <td>{{user.createTime}}</td>
         <td>{{user.lastLogin}}</td>
-        <td>
+        <td nzRight="0px">
           <button [disabled]="user.disabled" nz-button nzType="default" nzSize="small" style="margin-right: 5px" (click)="toEditUser(user)">
             {{'edit' | translate}}
           </button>
